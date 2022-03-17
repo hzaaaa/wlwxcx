@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/childPages/power/socket/socket",
+    "pages/index/childPages/power/power",
+    "pages/index/index",
+    "pages/scancode/scancode",
+    "pages/myspace/myspace"
+    
+    
+  ],
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#0068FF",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/images/tabs/shouye.png",
+        "selectedIconPath": "/static/images/tabs/shouye-active.png"
+      },
+      {
+        "pagePath": "pages/scancode/scancode",
+        "text": "扫码",
+        "iconPath": "/static/images/tabs/code.png",
+        "selectedIconPath": "/static/images/tabs/code-active.png"
+      },
+      {
+        "pagePath": "pages/myspace/myspace",
+        "text": "我的",
+        "iconPath": "/static/images/tabs/wode.png",
+        "selectedIconPath": "/static/images/tabs/wode-active.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0068FF",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

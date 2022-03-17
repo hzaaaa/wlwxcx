@@ -1,0 +1,71 @@
+button {
+  padding: 0;
+  margin: 0 ;
+}
+.container {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.container .space1 {
+  width: 100%;
+  height: 60rpx;
+  background: #0068ff;
+}
+.container .space2 {
+  width: 100%;
+  height: 260rpx;
+  background-color: #fff;
+}
+.container .head-block {
+  width: 100%;
+  height: 256rpx;
+  background: #0068ff;
+}
+.container .head-block .title {
+  position: relative;
+  left: 24rpx;
+  top: 10rpx;
+  font-size: 56rpx;
+  font-family: PingFang SC, PingFang SC-Heavy;
+  font-weight: 800;
+  text-align: left;
+  color: #ffffff;
+  line-height: 80rpx;
+}
+.container .banners {
+  position: absolute;
+  left: 24rpx;
+  top: 184rpx;
+  height: 334rpx;
+  width: 702rpx;
+}
+.container .wrap-block {
+  display: flex;
+  flex-wrap: wrap;
+}
+.container .wrap-block .item {
+  margin-left: 48rpx;
+  margin-right: 0;
+  width: 302rpx;
+  height: 204rpx;
+  background: white;
+  border-radius: 20rpx;
+  margin-bottom: 52rpx;
+  box-shadow: 0 4rpx 5rpx 0 rgba(0, 0, 0, 0.2);
+  padding: 0;
+}
+.container .wrap-block .item .icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 36rpx;
+  margin: 36rpx auto 0rpx;
+}
+.container .wrap-block .item .small-title {
+  margin-top: 14rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC, PingFang SC-Medium;
+  font-weight: 500;
+  text-align: center;
+  color: #333333;
+}

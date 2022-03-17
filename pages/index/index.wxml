@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="space1"></view>
+  <view class="head-block">
+    <view class="title">首页</view>
+  </view>
+  <swiper class="banners abs"  		 indicator-dots indicator-color='rgba(255,255,255,0.2)' indicator-active-color='#FFFFFF'>
+    <swiper-item >
+      <image style="width: 100%;"  src="/static/images/user-bg.jpg"></image>
+    </swiper-item>
+    <swiper-item >
+      <image  style="width: 100%;" src="/static/images/user-bg.jpg"></image>
+    </swiper-item>
+    <swiper-item >
+      <image  style="width: 100%;" src="/static/images/user-bg.jpg"></image>
+    </swiper-item>
+  </swiper>
+  <view class="space2"></view>
+  <view class="wrap-block">
+    <button class="item" bindtap="goto">
+      <image src='/static/images/index/kdzx2.png' class="icon">
+      </image>
+      <view class="small-title">
+        控电中心
+      </view>
+    </button>
+    <button class="item">
+      <image src='/static/images/index/kszx2.png' class="icon">
+      </image>
+      <view class="small-title">
+        控水中心
+      </view>
+    </button>
+    
+    
+    <button class="item">
+      <image src='/static/images/index/sjgl2.png' class="icon">
+      </image>
+      <view class="small-title">
+        数据概览
+      </view>
+    </button><button class="item">
+      <image src='/static/images/index/sbbx2.png' class="icon">
+      </image>
+      <view class="small-title">
+        设备保修
+      </view>
+    </button><button class="item">
+      <image src='/static/images/index/sbts2.png' class="icon">
+      </image>
+      <view class="small-title">
+        设备调试
+      </view>
+    </button>
+    <button class="item">
+      <image src='/static/images/index/yjaz2.png' class="icon">
+      </image>
+      <view class="small-title">
+        硬件安装
+      </view>
+    </button>
+  </view>
+</view>

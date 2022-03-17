@@ -1,0 +1,50 @@
+<view class="power">
+  <view class="head-color">
+    <image class="xzjt" id='index' bindtap="gotoPage" src="/static/images/common/xzjt.png"></image>
+    <view class="title">控电中心</view>
+    <view class="controler">
+      <view class="more-select" bindtap="switchMulChoi">{{mulChoi.mulChoiName}}</view>
+      <picker mode='multiSelector' bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          {{array[index]}}
+        </view>
+      </picker>
+
+    </view>
+
+    <scroll-view class="banner" scroll-x='true' enable-flex style="width: 100%">
+      <view class="item {{selectIndex===index?'item-active':''}}" wx:for='{{selectArray}}' id='{{index}}' bindtap="selectItemTap">{{item}}</view>
+    </scroll-view>
+
+  </view>
+  <view class="body-wrap">
+    <view class="body-item" wx:for='{{10}}'>
+      <view class="radioC" hidden='{{!mulChoi.isMul}}'>
+        <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+      </view>
+      <image class="image"></image>
+      <view class="wordGroup">
+        <view class="name">学生插座</view>
+        <view class="address">校区A-教学楼A-一层-101</view>
+      </view>
+      <image class="xyjt"  bindtap="gotoPage" src="/static/images/common/xyjt.png"></image>
+      <view class="switchC">
+        <switch color='#0068FF' checked="{{switch1Checked}}" bindchange="switch1Change" />
+      </view>
+
+    </view>
+
+  </view>
+  <view class="bottomC" hidden='{{!mulChoi.isMul}}'>
+    
+    <view class="buttonC blue-body">
+      操作
+    </view>
+    <view class="buttonC blue-border">
+      取消
+    </view>
+    <view class="radioC2" >
+      <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" /> 全选
+    </view>
+  </view>
+</view>

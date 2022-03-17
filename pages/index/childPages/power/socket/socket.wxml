@@ -1,0 +1,110 @@
+<view class="socket">
+  <view class="head">
+    <image class="xzjt" id='index' bindtap="gotoPage" src="/static/images/common/xzjt.png"></image>
+    <view class="title">插座设置</view>
+    <view class="img"></view>
+  </view>
+  <view class="body">
+    <view class="item">
+      <view class="item-key">设备状态:</view>
+      <view class="switchC">
+        <switch color='#0068FF' checked="{{switch1Checked}}" bindchange="switch1Change" />
+      </view>
+    </view>
+    <view class="item">
+      <view class="item-key">设备编号:</view>
+      <view class="item-value">111102515111</view>
+    </view>
+    <view class="item">
+      <view class="item-key">设备位置:</view>
+      <view class="item-value">111102515111</view>
+    </view>
+    <view class="item">
+      <view class="item-key">设备类型:</view>
+      <view class="item-value">111102515111</view>
+    </view>
+
+    <view class="item">
+      <view class="item-key">设备名称:</view>
+      <view class="item-value">111102515111</view>
+    </view>
+
+    <view class="item">
+      <view class="item-key">设备电流:</view>
+      <!-- <view class="item-value">111102515111</view> -->
+
+      <radio-group>
+        <view class="radioGC">
+          <view class="item">
+            <view class="radioC">
+              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+            </view>
+            <view class="text">2A</view>
+          </view>
+          <view class="item">
+            <view class="radioC">
+              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+            </view>
+            <view class="text">8A</view>
+          </view>
+          <view class="item">
+            <view class="radioC">
+              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+            </view>
+            <view class="text">16A</view>
+          </view>
+          <view class="item">
+            <view class="radioC">
+              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+            </view>
+            <view class="text">30A</view>
+          </view>
+        </view>
+        <view class="radioGC">
+          <view class="item">
+            <view class="radioC">
+              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+            </view>
+            <view class="text">过载自动断电保护</view>
+          </view>
+        </view>
+      </radio-group>
+
+    </view>
+    <view class="item">
+      <view class="item-key">通电方式:</view>
+      <radio-group>
+        <view class="radioGC">
+          <view class="item">
+            <view class="radioC">
+              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+            </view>
+            <view class="text">实时</view>
+          </view>
+          <view class="item">
+            <view class="radioC">
+              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+            </view>
+            <view class="text">预约</view>
+          </view>
+
+
+        </view>
+
+      </radio-group>
+    </view>
+    <view class="item">
+      <view class="item-key1">预约通电时间:</view>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          当前选择: {{date}}
+        </view>
+      </picker>
+      <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+        <view class="picker">
+          当前选择: {{time}}
+        </view>
+      </picker>
+    </view>
+  </view>
+</view>

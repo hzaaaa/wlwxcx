@@ -1,0 +1,27 @@
+/* pages/scancode/scancode.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+/*不配置page没有显示可能出问题*/
+.camera{
+  width: 100%;
+  height: 100%;
+}
+.coverText{
+  color: white;
+  position: absolute;
+  top: 5%;
+  left: 45%;
+}
+.outline{
+  width: 100%;
+  height: 100%;
+}
+.button{
+  width: 15%;
+  height: 10%;
+  position: absolute;
+  top: 80%;
+  left: 45%;
+}
