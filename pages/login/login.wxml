@@ -1,0 +1,20 @@
+<!-- pages/login/login.wxml
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"  bindtap="getUserProfile">
+授权登录
+</button> -->
+<view  style="width:100%;height:100%">
+   
+
+   <view class='content' >
+      <view class="content-logo">
+         <image src='/static/images/user1.jpg' alt="用户"></image>
+      </view>
+      <view style="border-bottom:1px solid rgba(204,204,204,0.5);"></view>
+      <view style="margin-top:30rpx;">申请获取以下权限</view>
+      <text>获得您的公开信息(用于用户信息认证)</text>
+      <button class='bottom' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"  bindtap="getUserProfile">授权登录</button>
+      <!-- <button class='bottom' wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 授权登录</button>
+      <button class='bottom' wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权登录 </button> -->
+   </view>
+</view>
+

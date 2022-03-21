@@ -1,4 +1,6 @@
 // pages/myspace/myspace.js
+// var WXBizDataCrypt = require('../../utils/WXBizDataCrypt');
+
 Page({
 
   /**

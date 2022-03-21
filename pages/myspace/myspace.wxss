@@ -1,1 +1,44 @@
-/* pages/myspace/myspace.wxss */
+page {
+  background: #f8f8f8;
+  height: 100%;
+}
+.myspace .head {
+  width: 100%;
+  height: 598rpx;
+  background-color: blue;
+}
+.myspace .body {
+  position: absolute;
+  top: 556rpx;
+  background: #ffffff;
+  border-radius: 10px 10px 0px 0px;
+  height: 300rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.myspace .body .item {
+  flex: 1;
+}
+.myspace .body .line {
+  box-sizing: border-box;
+  height: 1px;
+  opacity: 0.05;
+  border: 0.5px solid #333333;
+  width: 634rpx;
+  margin: 0 auto;
+}
+.myspace .footer {
+  position: absolute;
+  top: 880rpx;
+  margin-top: 24rpx;
+  background-color: #ffffff;
+  height: 100rpx;
+  width: 100%;
+  font-size: 16px;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: center;
+  color: #333333;
+  line-height: 100rpx;
+}

@@ -1,2 +1,16 @@
-<!--pages/myspace/myspace.wxml-->
-<text>pages/myspace/myspace.wxml</text>
+<view class="myspace">
+  <view class="head"></view>
+  <view class="body">
+    <view class="item"></view>
+    <view class="line"></view>
+    <view class="item"></view>
+    <view class="line"></view>
+    <view class="item"></view>
+    
+  </view>
+  <view class="footer">
+    退出当前小程序
+  </view>
+  
+  
+</view>

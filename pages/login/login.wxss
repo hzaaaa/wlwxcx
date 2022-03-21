@@ -1,0 +1,54 @@
+/* pages/demo1/demo1.wxss */
+
+.header {
+  margin: 90rpx 0 90rpx 50rpx;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  width: 650rpx;
+  height: 300rpx;
+  line-height: 450rpx;
+}
+
+.header image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.content {
+  padding: 90rpx 50rpx;
+  box-sizing: border-box;
+  height: 350rpx;
+}
+
+.content-logo {
+  height: 350rpx;
+  position: relative;
+}
+
+.content-logo image {
+  width: 50px;
+  height: 50px;
+  border: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: 42rpx auto;
+}
+
+
+.content text {
+  display: block;
+  color: #9d9d9d;
+  margin-top: 18rpx;
+  font-size: 32rpx;
+}
+
+.bottom {
+  border-radius: 80rpx;
+  margin: 70rpx 50rpx;
+  font-size: 35rpx;
+  color: #FFFFFF;
+  background-color: #1FC987;
+}

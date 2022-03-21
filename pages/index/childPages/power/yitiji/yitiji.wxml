@@ -1,7 +1,7 @@
 <view class="socket">
   <view class="head">
     <image class="xzjt" id='index' bindtap="gotoPage" src="/static/images/common/xzjt.png"></image>
-    <view class="title">插座设置</view>
+    <view class="title">一体机设置</view>
     <view class="img"></view>
   </view>
   <view class="body">
@@ -29,48 +29,7 @@
       <view class="item-value">111102515111</view>
     </view>
 
-    <view class="item">
-      <view class="item-key">设备电流:</view>
-      <!-- <view class="item-value">111102515111</view> -->
-
-      <radio-group>
-        <view class="radioGC">
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">2A</view>
-          </view>
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">8A</view>
-          </view>
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">16A</view>
-          </view>
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">30A</view>
-          </view>
-        </view>
-        <view class="radioGC">
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">过载自动断电保护</view>
-          </view>
-        </view>
-      </radio-group>
-
-    </view>
+    
     <view class="item">
       <view class="item-key">通电方式:</view>
       <radio-group>
