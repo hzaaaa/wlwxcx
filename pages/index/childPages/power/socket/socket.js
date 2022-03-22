@@ -15,7 +15,7 @@ Page({
     dateTimeArray1: null,//时间范维数组
     dateTime: null,
     dateTimeArray: null,
-
+    deviceData:null
   },
   changeDateTime(e) {
     this.setData({
@@ -85,7 +85,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('acceptDataFromOpenerPage', data=> {
+      console.log(data);
+      this.setData({
+        deviceData:data.data
+      })
+    })
   },
 
   /**

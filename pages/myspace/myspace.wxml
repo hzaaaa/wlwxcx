@@ -1,5 +1,9 @@
 <view class="myspace">
-  <view class="head"></view>
+  <image class="head" src='{{avatarUrl}}'>
+    
+  </image>
+  <image class="img" src='{{avatarUrl}}'></image>
+  <view class="nickName">{{nickName}}</view>
   <view class="body">
     <view class="item"></view>
     <view class="line"></view>

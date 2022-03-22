@@ -8,13 +8,7 @@ App({
     this.login();
     
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    // this.login();
-    // this.getUserToLogin();
-  },
+  
   login(){
     //获取code
     wx.login({
@@ -28,8 +22,9 @@ App({
               wx.setStorageSync('session_key', res1['session_key']);
               request('/weChat/login',{openid:res1.openid}).then(res2=>{
                 console.log(res2)
-                //没有此账户信息，请联系管理员！
+                
                 if(res2.code===-9016){
+                  //没有此账户信息，请联系管理员！
                   wx.showToast({
                     title: res2.msg,
                     icon: 'error',
@@ -42,8 +37,16 @@ App({
                   })
                 }else if(res2.code===0){
                   //登录成功
-                  wx.reLaunch( {
-                    url:'/pages/index/index'
+                  // debugger
+                  wx.setStorageSync('userInfo',JSON.stringify(res2.data))
+                  // wx.reLaunch( {
+                  //   url:'/pages/index/index'
+                  //   //
+                    
+                  // })
+                  //test
+                  wx.navigateTo({
+                    url:'/pages/index/childPages/power/power'
                   })
                 }else{
                   wx.showToast({
@@ -72,6 +75,8 @@ App({
               
             }
             
+          }).catch(err=>{
+            console.log(err)
           })
         } else {
           console.log('登录失败！', res.errMsg)

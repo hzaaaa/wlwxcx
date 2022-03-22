@@ -1,13 +1,15 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/index/childPages/power/power",
     "pages/login/login",
     
     "pages/myspace/myspace",
     "pages/index/childPages/power/yitiji/yitiji",
     "pages/index/childPages/power/kongkai/kongkai",
     "pages/index/childPages/power/socket/socket",
-    "pages/index/childPages/power/power",
+    
     "pages/scancode/scancode"
     
   ],

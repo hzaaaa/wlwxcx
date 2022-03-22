@@ -47,8 +47,13 @@ export default (url, data = {}, method = 'GET') => {
         resolve(res.data); // resolve修改promise的状态为成功状态resolved
       },
       fail: (err) => {
-        // console.log('请求失败: ', err);
-        reject(err); // reject修改promise的状态为失败状态 rejected
+        console.log('请求失败: ', err);
+        wx.showToast({
+          title: '网络错误',
+          icon: 'error',
+          duration: 2000
+        })
+        // reject(err); // reject修改promise的状态为失败状态 rejected
       }
     })
   })

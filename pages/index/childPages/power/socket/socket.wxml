@@ -8,25 +8,25 @@
     <view class="item">
       <view class="item-key">设备状态:</view>
       <view class="switchC">
-        <switch color='#0068FF' checked="{{switch1Checked}}" bindchange="switch1Change" />
+        <switch color='#0068FF' checked="{{deviceData.userState===1}}" bindchange="switch1Change" />
       </view>
     </view>
     <view class="item">
       <view class="item-key">设备编号:</view>
-      <view class="item-value">111102515111</view>
+      <view class="item-value">{{deviceData.id}}</view>
     </view>
     <view class="item">
       <view class="item-key">设备位置:</view>
-      <view class="item-value">111102515111</view>
+      <view class="item-value">{{deviceData.position}}</view>
     </view>
     <view class="item">
       <view class="item-key">设备类型:</view>
-      <view class="item-value">111102515111</view>
+      <view class="item-value">{{deviceData['device_type']}}</view>
     </view>
 
     <view class="item">
       <view class="item-key">设备名称:</view>
-      <view class="item-value">111102515111</view>
+      <view class="item-value">{{deviceData['device_name']}}</view>
     </view>
 
     <view class="item">

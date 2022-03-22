@@ -1,5 +1,5 @@
 /**
- * Created by rd on 2017/5/4.
+ * 加解密
  */
 // 引入CryptoJS
 var Crypto = require('cryptojs/cryptojs.js').Crypto;

@@ -9,17 +9,17 @@ Page({
    */
   data: {
     hasphoneNumber: false,
-    hasName:false,
-    
+    hasName: false,
+
 
   },
   getPhoneNumber(e) {
     var pc = new WXBizDataCrypt(config.appId, wx.getStorageSync('session_key'));
-    var data = pc.decryptData(e.detail.encryptedData , e.detail.iv)
+    var data = pc.decryptData(e.detail.encryptedData, e.detail.iv)
     console.log(data)
     wx.setStorageSync('phoneNumber', data.phoneNumber)
     this.setData({
-      hasphoneNumber:true
+      hasphoneNumber: true
     })
     this.loginOrAuthorization();
   },
@@ -32,17 +32,17 @@ Page({
         wx.setStorageSync('nickName', res.userInfo.nickName)
         wx.setStorageSync('avatarUrl', res.userInfo.avatarUrl)
         this.setData({
-          hasName:true
+          hasName: true
         })
         this.loginOrAuthorization();
       }
     })
   },
-  loginOrAuthorization(){
-    
-    if(this.data.hasName&&this.data.hasphoneNumber){
+  loginOrAuthorization() {
+
+    if (this.data.hasName && this.data.hasphoneNumber) {
       //
-      
+      this.getUserToLogin();
     }
   },
   /**
@@ -54,18 +54,70 @@ Page({
   },
 
   //授权登录
-  getUserToLogin(){
-    
-    request('/weChat/authorization',)
-    wx.getUserInfo({
-      success: function(res) {
-        // debugger
-        var userInfo = res.userInfo
-        var nickName = userInfo.nickName
-        var avatarUrl = userInfo.avatarUrl
-        var gender = userInfo.gender //性别 0：未知、1：男、2：女
-        
+  getUserToLogin() {
+    let headPic = wx.getStorageSync('avatarUrl');
+    let wechatNickname = wx.getStorageSync('nickName');
+    let mobile = wx.getStorageSync('phoneNumber');
+    let openid = wx.getStorageSync('openid');
+    request('/weChat/authorization', {
+      headPic,
+      wechatNickname,
+      mobile,
+      openid
+    }, 'POST').then(res => {
+      console.log(res)
+      // debugger
+      if (res.code === 0) {
+        //授权成功
+        this.login();
+        // wx.reLaunch( {
+        //   url:'/pages/index/index'
+        // })
+      } else {
+        //授权登录失败
+        wx.showToast({
+          title: res.msg,
+          icon: 'error',
+          duration: 2000
+        })
       }
+
+    })
+
+  },
+  login() {
+    let openid = wx.getStorageSync('openid');
+    request('/weChat/login', {
+      openid
+    }).then(res2 => {
+      console.log(res2)
+      if (res2.code === -9016) {
+        //没有此账户信息，请联系管理员！
+        wx.showToast({
+          title: res2.msg,
+          icon: 'error',
+          duration: 2000
+        })
+      } else if (res2.code === -9017) {
+        //"没有授权，请授权！"
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+      } else if (res2.code === 0) {
+        //登录成功
+        // debugger
+        wx.setStorageSync('userInfo',JSON.stringify(res2.data))
+        wx.reLaunch({
+          url: '/pages/index/index'
+        })
+      } else {
+        wx.showToast({
+          title: res2.msg,
+          icon: 'error',
+          duration: 2000
+        })
+      } 
+
     })
   },
   /**

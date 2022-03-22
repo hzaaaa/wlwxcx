@@ -30,6 +30,12 @@ page {
 .power .head-color .controler {
   margin-top: 40rpx;
 }
+.power .head-color .controler .select-list {
+  display: flex;
+}
+.power .head-color .controler .select-list .select-item {
+  margin-left: 30rpx;
+}
 .power .head-color .controler .picker {
   font-size: 24rpx;
   font-family: PingFang SC, PingFang SC-Regular;
