@@ -21,9 +21,11 @@ mixinUtils({
     })
     console.log(this.data.editData.userState);
   },
-  dianliuChange(event){
+  lampStateChange(event){
     console.log(event.detail);
-    this.data.editData.electric= event.detail.value;
+    
+    this.data.lampSateArray= event.detail.value;
+    
   },
   modeChange(event){
     console.log(event.detail);
@@ -37,9 +39,28 @@ mixinUtils({
     this.data.editData.startTime= str;
     str = this.getTimeStr(this.data.dateTime1,this.data.dateTimeArray1);
     this.data.editData.endTime= str;
-
+    
+    //初始化灯状态
+    let arr=[];
+    for(let i=0;i<this.data.editData.hardwareType>>>0;i++){
+      arr.push(0);
+    }
+    //修改灯状态
+    let lampSateArray = this.data.lampSateArray||[];
+    for(let i=0;i<lampSateArray.length;i++){
+      if(lampSateArray[i]==='all'){
+        arr.forEach((v,i,arr)=>{
+          arr[i]=1;
+        })
+        break;
+      }
+      arr[lampSateArray[i]]=1;
+    }
+    console.log(arr);
+    this.data.editData.lampSate=arr.toString();
     console.log(this.data.editData);
-    request('/weChat/editAirSwitch',this.data.editData,'POST').then(res=>{
+    
+    request('/weChat/editLamp',this.data.editData,'POST').then(res=>{
       // debugger
       if(res.code===0){
         wx.showToast({

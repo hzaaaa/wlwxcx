@@ -8,22 +8,56 @@ Page({
         url: '/pages/index/index'
       })
     } else {
-      let id=e.currentTarget.id;
-      request('/weChat/selectSingle',{id}).then(res=>{
-        if(res.code===0){
+      let id = e.currentTarget.id;
+      request('/weChat/selectSingle', {
+        id
+      }).then(res => {
+        if (res.code === 0) {
+          let path = ''
+          switch (res.data.hardwareType) {
+            case '1': //插座
+              path = 'socket';
+              break;
+            case '2': //空开
+              path = 'kongkai';
+              break;
+            case '3': //灯
+              path = 'lamp';
+              break;
+            case '4': //水表
+              // path = 'socket';
+              break;
+            case '5': //环境监测
+              // path = 'socket';
+              break;
+            case '6': //锁
+              path = 'lock';
+              break;
+            case '7': //空调
+              path = 'kongtiao';
+              break;
+            case '8': //一体机
+              path = 'yitiji';
+              break;
+            default :
+
+          }
+          // debugger
           wx.navigateTo({
-            url: '/pages/index/childPages/power/socket/socket',
-            success: function(res1) {
+            url: `/pages/index/childPages/power/${path}/${path}`,
+            success: function (res1) {
               // 通过eventChannel向被打开页面传送数据
-              res1.eventChannel.emit('acceptDataFromOpenerPage', { data:res.data })
+              res1.eventChannel.emit('acceptDataFromOpenerPage', {
+                data: res.data
+              })
             }
           })
-        }else{
-          console.log('获取设备详情失败',res)
+        } else {
+          console.log('获取设备详情失败', res)
         }
       })
       // let item = this.data.deviceList
-      
+
     }
   },
   selectCategoryTap(e) {
@@ -31,8 +65,8 @@ Page({
     this.setData({
       categoryId: e.currentTarget.id
     })
-    
-    this.queryDeviceList(e.currentTarget.id,...this.getIdFromList())
+
+    this.queryDeviceList(e.currentTarget.id, ...this.getIdFromList())
   },
   switchMulChoi() {
     if (this.data.mulChoi.isMul) {
@@ -107,10 +141,10 @@ Page({
       if (campusList.data.length === 0 && buildList.data.length !== 0) {
         //无校区,有楼栋
         // 
-        buildList.data=[{
-          spaceName:'全部',
-          id:''
-        },...buildList.data]
+        buildList.data = [{
+          spaceName: '全部',
+          id: ''
+        }, ...buildList.data]
         this.data.selectList.build.array = buildList.data;
         this.setData({
           selectList: this.data.selectList
@@ -119,10 +153,10 @@ Page({
       } else if (campusList.data.length !== 0 && buildList.data.length === 0) {
         //有校区
         // 
-        campusList.data=[{
-          spaceName:'全部',
-          id:''
-        },...campusList.data]
+        campusList.data = [{
+          spaceName: '全部',
+          id: ''
+        }, ...campusList.data]
         this.data.selectList.campus.array = campusList.data;
         this.setData({
           selectList: this.data.selectList
@@ -137,42 +171,48 @@ Page({
       console.log(err)
     })
     //查询设备类型
-    request('/weChat/category').then(res=>{
-      if(res.code===0){
-        res.data=[{
-          id:'',
-          deviceType:'全部'
-        },...res.data]
+    request('/weChat/category').then(res => {
+      if (res.code === 0) {
+        res.data = [{
+          id: '',
+          deviceType: '全部'
+        }, ...res.data]
         this.setData({
-          deviceCategoryList:res.data
+          deviceCategoryList: res.data
         })
-      }else{
-        console.log('获取设备类型失败',res.msg)
+      } else {
+        console.log('获取设备类型失败', res.msg)
       }
-      
-    },err=>{
-      console.log('获取设备类型失败',err)
+
+    }, err => {
+      console.log('获取设备类型失败', err)
     })
     //查询设备列表
     this.queryDeviceList();
-    
+
   },
-  queryDeviceList(categoryId='',campusId='',buildId='',floorId='',roomId=''){
-    request('/weChat/selectCentralizedControl',{categoryId,campusId,buildId,floorId,roomId}).then(res=>{
+  queryDeviceList(categoryId = '', campusId = '', buildId = '', floorId = '', roomId = '') {
+    request('/weChat/selectCentralizedControl', {
+      categoryId,
+      campusId,
+      buildId,
+      floorId,
+      roomId
+    }).then(res => {
       // 
-      if(res.code===0){
+      if (res.code === 0) {
         this.setData({
-          deviceList:res.data
+          deviceList: res.data
         })
-      }else{
-        console.log('获取设备列表失败',res)
+      } else {
+        console.log('获取设备列表失败', res)
       }
-    },err=>{
-      console.log('获取设备列表失败',err)
+    }, err => {
+      console.log('获取设备列表失败', err)
     })
   },
-  getIdFromList(){
-    let ids=[];
+  getIdFromList() {
+    let ids = [];
     ids.push(this.data.selectList.campus.array[this.data.selectList.campus.index].id);
     ids.push(this.data.selectList.build.array[this.data.selectList.build.index].id);
     ids.push(this.data.selectList.floor.array[this.data.selectList.floor.index].id);
@@ -180,10 +220,10 @@ Page({
     return ids;
   },
   DevicePositionChange(event) {
-    
-    
-    let currentName=event.currentTarget.id;
-    let index=event.detail.value;
+
+
+    let currentName = event.currentTarget.id;
+    let index = event.detail.value;
     let id = this.data.selectList[currentName].array[index].id;
     // 
     //更新index状态
@@ -192,21 +232,21 @@ Page({
       selectList: this.data.selectList
     })
     //更新其他位置列表
-    this.getNextInfo(currentName,id)
+    this.getNextInfo(currentName, id)
 
-    
+
     //改变设备列表
-    eventBus.on('updateDeviceList',this,_=>{
+    eventBus.on('updateDeviceList', this, _ => {
       // debugger
       let pO = this.getIdFromList();
-      this.queryDeviceList(this.data.categoryId,...pO);
-      eventBus.remove('updateDeviceList',this)
-      
+      this.queryDeviceList(this.data.categoryId, ...pO);
+      eventBus.remove('updateDeviceList', this)
+
     })
-    
+
   },
   getNextInfo(parentName, id) {
-    
+
     let currentName = '';
     switch (parentName) {
       case 'campus':
@@ -224,21 +264,21 @@ Page({
       default:
         currentName = '';
     }
-    if (currentName === ''){
+    if (currentName === '') {
       eventBus.emit('updateDeviceList')
       return;
     }
-     
+
     request('/weChat/spaceName', {
       id
     }).then(res => {
-      res.data=[{
-        spaceName:'全部',
-        id:''
-      },...res.data]
+      res.data = [{
+        spaceName: '全部',
+        id: ''
+      }, ...res.data]
       this.data.selectList[currentName].array = res.data;
       this.data.selectList[currentName].index = 0;
-      
+
       this.setData({
         selectList: this.data.selectList
       })

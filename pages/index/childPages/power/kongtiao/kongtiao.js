@@ -11,7 +11,55 @@ mixinUtils({
    */
   data: {
     deviceData:null,
-    editData:null
+    editData:null,
+    fengxiangValue:null,
+    fengxiangList:[
+      {
+        name:'扫风',
+        value:'0'
+      },
+      {
+        name:'向上',
+        value:'1'
+      },
+      {
+        name:'中',
+        value:'2'
+      },
+      {
+        name:'向下',
+        value:'3'
+      },
+    ],
+    qiangduValue:null,
+    qiangduList:[
+      {
+        name:'自动',
+        value:'1'
+      },
+      {
+        name:'低',
+        value:'2'
+      },
+      {
+        name:'中',
+        value:'3'
+      },
+      {
+        name:'高',
+        value:'4'
+      },
+    ]
+  },
+  fengxiangChange(event){
+    this.setData({
+      fengxiangValue:event.currentTarget.id
+    })
+  },
+  qiangduChange(event){
+    this.setData({
+      qiangduValue:event.currentTarget.id
+    })
   },
   stateChange(event){
     // debugger

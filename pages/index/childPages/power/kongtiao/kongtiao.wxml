@@ -1,7 +1,7 @@
 <view class="socket">
   <view class="head">
     <image class="xzjt" id='index' bindtap="gotoPage" src="/static/images/common/xzjt.png"></image>
-    <view class="title">插座设置</view>
+    <view class="title">空调设置</view>
     <view class="img"></view>
   </view>
   <view class="body">
@@ -28,49 +28,65 @@
       <view class="item-key">设备名称:</view>
       <view class="item-value">{{deviceData['device_name']}}</view>
     </view>
-
     <view class="item">
-      <view class="item-key">设备电流:</view>
-      <!-- <view class="item-value">111102515111</view> -->
-
-      <radio-group bindchange='dianliuChange'>
+      <view class="item-key">空调温度:</view>
+      <view class="item-value">{{deviceData['device_name']}}</view>
+    </view>
+    <slider value="16" backgroundColor="#33333333" activeColor='#0068FF' block-size='12' show-value='true'/>
+    <view class="item">
+      <view class="item-key">空调模式:</view>
+      <radio-group bindchange='modeChange2'>
         <view class="radioGC">
+          <view class="item">
+            <view class="radioC">
+              <radio color='#0068FF' value="1" checked="{{switch1Checked2}}" />
+            </view>
+            <view class="text">自动</view>
+          </view>
           <view class="item">
             <view class="radioC">
               <radio color='#0068FF' value="2" checked="{{switch1Checked2}}" />
             </view>
-            <view class="text">2A</view>
+            <view class="text">制冷</view>
           </view>
           <view class="item">
             <view class="radioC">
-              <radio color='#0068FF' value="8" checked="{{switch1Checked2}}" />
+              <radio color='#0068FF' value="3" checked="{{switch1Checked2}}" />
             </view>
-            <view class="text">8A</view>
+            <view class="text">抽湿</view>
           </view>
           <view class="item">
             <view class="radioC">
-              <radio color='#0068FF' value="16" checked="{{switch1Checked2}}" />
+              <radio color='#0068FF' value="4" checked="{{switch1Checked2}}" />
             </view>
-            <view class="text">16A</view>
+            <view class="text">送风</view>
           </view>
           <view class="item">
             <view class="radioC">
-              <radio color='#0068FF' value="30" checked="{{switch1Checked2}}" />
+              <radio color='#0068FF' value="5" checked="{{switch1Checked2}}" />
             </view>
-            <view class="text">30A</view>
+            <view class="text">制热</view>
           </view>
-        </view>
-        <!-- <view class="radioGC">
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">过载自动断电保护</view>
-          </view>
-        </view> -->
-      </radio-group>
 
+
+        </view>
+
+      </radio-group>
     </view>
+    <view class="item">
+      <view class="item-key">空调风向:</view>
+      <view class="item-block-wrap">
+        <view wx:for='{{fengxiangList}}' bindtap="fengxiangChange" id='{{item.value}}' class="{{fengxiangValue===item.value?'item-block-active' :'item-block'}}">{{item.name}}</view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="item-key">空调强度:</view>
+      <view class="item-block-wrap">
+        <view wx:for='{{qiangduList}}' bindtap="qiangduChange" id='{{item.value}}' class="{{qiangduValue===item.value?'item-block-active' :'item-block'}}">{{item.name}}</view>
+      </view>
+    </view>
+
+
     <view class="item">
       <view class="item-key">通电方式:</view>
       <radio-group bindchange='modeChange'>
@@ -93,24 +109,24 @@
 
       </radio-group>
     </view>
-    <view class="item" style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}"  >
+    <view class="item" style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}">
       <view class="item-key1">预约通电时间:</view>
 
       <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
         <view class="item-value">
-           {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}
-            <text style="color:#0068FF">修改</text>
+          {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}
+          <text style="color:#0068FF">修改</text>
         </view>
       </picker>
 
     </view>
-    <view class="item"  style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}">
+    <view class="item" style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}">
       <view class="item-key1">预约断电时间:</view>
 
       <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
         <view class="item-value">
-           {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
-            <text style="color:#0068FF">修改</text>
+          {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+          <text style="color:#0068FF">修改</text>
         </view>
       </picker>
 

@@ -41,11 +41,10 @@ App({
                   wx.setStorageSync('userInfo',JSON.stringify(res2.data))
                   // wx.reLaunch( {
                   //   url:'/pages/index/index'
-                  //   //
-                    
                   // })
                   //test
                   wx.navigateTo({
+                    // url:'/pages/index/childPages/power/socket/socket'
                     url:'/pages/index/childPages/power/power'
                   })
                 }else{

@@ -1,17 +1,15 @@
 {
   "pages": [
-    
-    "pages/index/index",
     "pages/index/childPages/power/power",
+    "pages/index/childPages/power/socket/socket",
+    "pages/index/index",
     "pages/login/login",
-    
     "pages/myspace/myspace",
     "pages/index/childPages/power/yitiji/yitiji",
     "pages/index/childPages/power/kongkai/kongkai",
-    "pages/index/childPages/power/socket/socket",
-    
-    "pages/scancode/scancode"
-    
+    "pages/scancode/scancode",
+    "pages/index/childPages/power/lamp/lamp",
+    "pages/index/childPages/power/kongtiao/kongtiao"
   ],
   "tabBar": {
     "color": "#333",
