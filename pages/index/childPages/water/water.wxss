@@ -80,7 +80,7 @@ page {
 }
 .power .body-wrap {
   position: absolute;
-  top: 336rpx;
+  top: 248rpx;
   height: calc(100% - 336rpx);
   width: 100%;
   overflow: auto;

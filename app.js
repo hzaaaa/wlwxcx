@@ -46,6 +46,7 @@ App({
                   wx.navigateTo({
                     // url:'/pages/index/childPages/power/socket/socket'
                     url:'/pages/index/childPages/power/power'
+                    // url:'/pages/index/childPages/water/water'
                   })
                 }else{
                   wx.showToast({

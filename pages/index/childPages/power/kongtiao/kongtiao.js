@@ -49,7 +49,23 @@ mixinUtils({
         name:'高',
         value:'4'
       },
-    ]
+    ],
+    temperature:28,
+  },
+  addOne(){
+    this.setData({
+      temperature:this.data.temperature+1
+    })
+  },
+  reduceOne(){
+    this.setData({
+      temperature:this.data.temperature-1
+    })
+  },
+  temperatureChange(event){
+    this.setData({
+      temperature:event.detail.value
+    })
   },
   fengxiangChange(event){
     this.setData({
@@ -80,15 +96,29 @@ mixinUtils({
       editData:this.data.editData
     })
   },
+  modeChange2(event){
+    console.log(event.detail);
+    this.data.editData.pattern= event.detail.value;
+    
+  },
   confirmUpdate(){
     let str = this.getTimeStr(this.data.dateTime,this.data.dateTimeArray);
     this.data.editData.startTime= str;
     str = this.getTimeStr(this.data.dateTime1,this.data.dateTimeArray1);
     this.data.editData.endTime= str;
 
+    this.data.editData.temperature=this.data.temperature+'';
+    this.data.editData.manualdirection=this.data.fengxiangValue;
+    this.data.editData.volume=this.data.qiangduValue;
+
+
+    this.data.editData.userState=this.data.editData.userState.toString();
+
+
     console.log(this.data.editData);
-    request('/weChat/editSocket',this.data.editData,'POST').then(res=>{
-      // debugger
+    debugger
+    request('/weChat/editAirConditioner',this.data.editData,'POST').then(res=>{
+      debugger
       if(res.code===0){
         wx.showToast({
           title: '操作成功',

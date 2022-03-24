@@ -1,7 +1,7 @@
 <view class="power">
   <view class="head-color">
     <image class="xzjt" id='index' bindtap="gotoPage" src="/static/images/common/xzjt.png"></image>
-    <view class="title">控电中心</view>
+    <view class="title">控水中心</view>
     <view class="controler">
       <!-- 多选设备 -->
       <view class="more-select" bindtap="switchMulChoi">{{mulChoi.mulChoiName}}</view>
@@ -27,15 +27,15 @@
             {{selectList.room.array[selectList.room.index].spaceName}}
           </view>
         </picker>
-
-
-      </view>
+        
+        
+      </view>      
     </view>
 
     <!-- 设备种类列表 -->
-    <scroll-view class="banner" scroll-x='true' enable-flex style="width: 100%">
+    <!-- <scroll-view class="banner" scroll-x='true' enable-flex style="width: 100%">
       <view class="item {{categoryId===item.id?'item-active':''}}" wx:for='{{deviceCategoryList}}' id='{{item.id}}' bindtap="selectCategoryTap">{{item.deviceType}}</view>
-    </scroll-view>
+    </scroll-view> -->
 
   </view>
   <view class="body-wrap">

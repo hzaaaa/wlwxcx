@@ -30,9 +30,19 @@
     </view>
     <view class="item">
       <view class="item-key">空调温度:</view>
-      <view class="item-value">{{deviceData['device_name']}}</view>
+      <view class="item-value">{{temperature}}°C</view>
     </view>
-    <slider value="16" backgroundColor="#33333333" activeColor='#0068FF' block-size='12' show-value='true'/>
+    <view class="temperatureC">
+      <slider min='19' max='30'  bindchanging='temperatureChange' value="{{temperature}}" backgroundColor="#33333333" activeColor='#0068FF' block-size='12' show-value='true'/>
+      <view class="buttonC">
+        <view class="add" bindtap="addOne">
+          <image class="img" src="/static/images/common/shangla.png"></image>
+        </view>
+        <view class="add" bindtap="reduceOne">
+          <image class="img" src="/static/images/common/xiala.png"></image>
+        </view>
+      </view>
+    </view>
     <view class="item">
       <view class="item-key">空调模式:</view>
       <radio-group bindchange='modeChange2'>

@@ -17,14 +17,14 @@
   </swiper>
   <view class="space2"></view>
   <view class="wrap-block">
-    <button class="item" bindtap="goto">
+    <button class="item" bindtap="goto" id='power'>
       <image src='/static/images/index/kdzx2.png' class="icon">
       </image>
       <view class="small-title">
         控电中心
       </view>
     </button>
-    <button class="item">
+    <button class="item" bindtap="goto" id='water'>
       <image src='/static/images/index/kszx2.png' class="icon">
       </image>
       <view class="small-title">

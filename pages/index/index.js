@@ -1,9 +1,10 @@
 // index.js
 Page({
-  goto(pageName){
-    console.log(pageName)
+  goto(event){
+    console.log(event.currentTarget.id)
+    let pageID = event.currentTarget.id;
     wx.navigateTo({
-      url:'/pages/index/childPages/power/power'
+      url:`/pages/index/childPages/${pageID}/${pageID}`
     })
   }
 })
