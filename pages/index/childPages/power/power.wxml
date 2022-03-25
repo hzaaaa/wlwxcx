@@ -1,4 +1,7 @@
 <view class="power">
+  <socketPopup show='{{batchShow&&hardwareType === "1"}}' ids='{{selectIdList}}' typename='{{deviceType}}'></socketPopup>
+  <kongkaiPopup show='{{batchShow&&hardwareType === "2"}}' ids='{{selectIdList}}' typename='{{deviceType}}'></kongkaiPopup>
+  <yitijiPopup show='{{batchShow&&hardwareType === "8"}}' ids='{{selectIdList}}' typename='{{deviceType}}'></yitijiPopup>
   <view class="head-color">
     <image class="xzjt" id='index' bindtap="gotoPage" src="/static/images/common/xzjt.png"></image>
     <view class="title">控电中心</view>
@@ -34,44 +37,50 @@
 
     <!-- 设备种类列表 -->
     <scroll-view class="banner" scroll-x='true' enable-flex style="width: 100%">
-      <view class="item {{categoryId===item.id?'item-active':''}}" wx:for='{{deviceCategoryList}}' id='{{item.id}}' bindtap="selectCategoryTap">{{item.deviceType}}</view>
+      <view class="item {{categoryId===item.id?'item-active':''}}" wx:for='{{deviceCategoryList}}' data-hardwareType='{{item.hardwareType}}' data-devicetype='{{item.deviceType}}' id='{{item.id}}' bindtap="selectCategoryTap">
+        {{item.deviceType}}
+      </view>
     </scroll-view>
 
   </view>
-  <view class="body-wrap">
-    <view class="body-item" wx:for='{{deviceList}}'>
-      <view class="radioC" hidden='{{!mulChoi.isMul}}'>
-        <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
-      </view>
-      <image class="image"></image>
-      <view class="wordGroup">
-        <view class="name">
-          <view class="state" style="background-color: {{item.userState===0?'#FF4747':'#2EEE4E'}};">
-          </view>
-          {{item.deviceName}}
+  <view class="body-wrap" style="height: calc(100% - {{mulChoi.isMul?440:336}}rpx);">
+    <checkbox-group bindchange='singleSelect'>
+      <view class="body-item" wx:for='{{deviceList}}'>
+        <view class="radioC" hidden='{{!mulChoi.isMul}}'>
+          <checkbox color='#0068FF' value="{{item.id}}" checked="{{singleSelect}}" />
         </view>
-        <view class="address">{{item.position}}</view>
-        <!-- <view class="name">{{学生插座}}</view>
+        <image class="image"></image>
+        <view class="wordGroup">
+          <view class="name">
+            <view class="state" style="background-color: {{item.userState===0?'#FF4747':'#2EEE4E'}};">
+            </view>
+            {{item.deviceName}}
+          </view>
+          <view class="address">{{item.position}}</view>
+          <!-- <view class="name">{{学生插座}}</view>
         <view class="address">校区A-教学楼A-一层-101</view> -->
-      </view>
-      <image class="xyjt" id='{{item.id}}' bindtap="gotoPage" src="/static/images/common/xyjt.png"></image>
-      <!-- <view class="switchC">
+        </view>
+        <image class="xyjt" id='{{item.id}}' bindtap="gotoPage" src="/static/images/common/xyjt.png"></image>
+        <!-- <view class="switchC">
         <switch color='#0068FF' checked="{{switch1Checked}}" bindchange="switch1Change" />
       </view> -->
 
-    </view>
+      </view>
+    </checkbox-group>
 
   </view>
   <view class="bottomC" hidden='{{!mulChoi.isMul}}'>
 
-    <view class="buttonC blue-body">
+    <view class="buttonC blue-body" bindtap="batchOpen">
       操作
     </view>
-    <view class="buttonC blue-border">
+    <view class="buttonC blue-border" bindtap="cancelMulSelect">
       取消
     </view>
     <view class="radioC2">
-      <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" /> 全选
+      <checkbox-group bindchange="allSelectChange">
+        <checkbox color='#0068FF' value="all" checked="{{allSelect}}" /> 全选
+      </checkbox-group>
     </view>
   </view>
 </view>

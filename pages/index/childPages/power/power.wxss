@@ -81,7 +81,6 @@ page {
 .power .body-wrap {
   position: absolute;
   top: 336rpx;
-  height: calc(100% - 336rpx);
   width: 100%;
   overflow: auto;
 }
@@ -184,6 +183,7 @@ page {
   color: #0068ff;
 }
 .power .bottomC .radioC2 {
+  width: 50%;
   margin-top: 25rpx;
   transform: scale(0.9);
   margin-right: -12rpx;

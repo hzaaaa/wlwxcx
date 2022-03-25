@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "socketPopup": "components/socketPopup/socketPopup",
+    "kongkaiPopup": "components/kongkaiPopup/kongkaiPopup",
+    "yitijiPopup": "components/yitijiPopup/yitijiPopup"
+  }
 }
