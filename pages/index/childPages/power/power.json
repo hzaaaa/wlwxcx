@@ -2,6 +2,9 @@
   "usingComponents": {
     "socketPopup": "components/socketPopup/socketPopup",
     "kongkaiPopup": "components/kongkaiPopup/kongkaiPopup",
-    "yitijiPopup": "components/yitijiPopup/yitijiPopup"
+    "yitijiPopup": "components/yitijiPopup/yitijiPopup",
+    "lampPopup": "components/lampPopup/lampPopup",
+    "kongtiaoPopup": "components/kongtiaoPopup/kongtiaoPopup"
+    
   }
 }

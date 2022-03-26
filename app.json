@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/childPages/water/water",
     "pages/index/childPages/power/power",
     "pages/index/childPages/power/socket/socket",
     "pages/index/index",
@@ -10,7 +11,7 @@
     "pages/scancode/scancode",
     "pages/index/childPages/power/lamp/lamp",
     "pages/index/childPages/power/kongtiao/kongtiao",
-    "pages/index/childPages/water/water",
+    
     "pages/index/childPages/water/waterDetail/waterDetail",
     "pages/index/childPages/power/lock/lock"
   ],

@@ -1,5 +1,5 @@
 <!--pages/index/childPages/power/components/socketPopup/socketPopup.wxml-->
-<view class="yitiji-popup" style="display: {{isShow?'':'none'}}">
+<view class="lamp-popup" style="display: {{isShow?'':'none'}}">
   <!-- test -->
   <view class="socket">
     <view class="title">批量操作</view>
@@ -15,38 +15,27 @@
           <switch color='#0068FF' checked="{{userState}}" bindchange="stateChange" />
         </view>
       </view>
-      <!-- <view class="body-item">
-        <view class="name">额定电流:</view>
-        <radio-group bindchange='dianliuChange'>
+      <view class="body-item">
+        <view class="name">亮灯方式:</view>
+        <radio-group bindchange='liangdengChange'>
           <view class="radioGC">
             <view class="item">
               <view class="radioC">
-                <radio color='#0068FF' value="2" checked="{{switch1Checked2}}" />
+                <radio color='#0068FF' value="0,0,0" checked="{{switch1Checked2}}" />
               </view>
-              <view class="text">2A</view>
+              <view class="text">全关</view>
             </view>
             <view class="item">
               <view class="radioC">
-                <radio color='#0068FF' value="8" checked="{{switch1Checked2}}" />
+                <radio color='#0068FF' value="1,1,1" checked="{{switch1Checked2}}" />
               </view>
-              <view class="text">8A</view>
+              <view class="text">全开</view>
             </view>
-            <view class="item">
-              <view class="radioC">
-                <radio color='#0068FF' value="16" checked="{{switch1Checked2}}" />
-              </view>
-              <view class="text">16A</view>
-            </view>
-            <view class="item">
-              <view class="radioC">
-                <radio color='#0068FF' value="30" checked="{{switch1Checked2}}" />
-              </view>
-              <view class="text">30A</view>
-            </view>
+            
           </view>
 
         </radio-group>
-      </view> -->
+      </view>
       <view class="body-item">
         <view class="name">通电方式:</view>
         <radio-group bindchange='modeChange'>

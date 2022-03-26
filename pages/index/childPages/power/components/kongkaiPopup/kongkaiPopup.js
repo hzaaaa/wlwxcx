@@ -26,10 +26,7 @@ Component({
         powerOnMode
       })
     },
-    dianliuChange(event) {
-      console.log(event.detail);
-      this.data.electric = event.detail.value;
-    },
+    
     
     confirmUpdate() {
       console.log(this.properties.ids)
@@ -40,7 +37,7 @@ Component({
       request('/weChat/batchEditing', {
         id: this.properties.ids.toString(),
         userState: this.data.userState,
-        electric: this.data.electric,
+        
         powerOnMode: this.data.powerOnMode,
         startTime,
         endTime

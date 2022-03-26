@@ -72,9 +72,6 @@ Page({
       return
     }
     
-
-    
-    
     // debugger
     // console.log(this.data.hardwareType);
     this.setData({
@@ -282,6 +279,32 @@ Page({
     }).then(res => {
       // 
       if (res.code === 0) {
+        res.data.forEach((v,i,arr)=>{
+          let src='socket';
+          switch(v.hardwareType){
+            case '1':
+              src='socket';
+              break;
+            case '2':
+              src='kongkai';
+              break;
+            case '3':
+              src='lamp';
+              break;
+            case '6':
+              src='lock';
+              break;
+            case '7':
+              src='kongtiao';
+              break;
+            case '8':
+              src='yitiji';
+              break;
+            default:
+          
+          }
+          v.src=`/static/images/device/${src}.png`
+        })
         this.setData({
           deviceList: res.data,
           allSelect: false,

@@ -55,6 +55,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    batchShow: false,
+
+    allSelect: false,
+    singleSelect: false,
+    selectIdList: [],
+
     selectList: {
       campus: {
         index: 0,
@@ -88,14 +94,76 @@ Page({
 
 
     deviceList: null,
-    deviceCategoryList: ['全部', '智能插座', '智能空开', '智能门锁', '空调', '灯', '一体机'],
     categoryId: '',
+    hardwareType: null,
+    deviceType:null,
+    
     mulChoi: {
       isMul: false,
       mulChoiName: '多选设备'
     }
   },
+  singleSelect(event) {
 
+    this.data.selectIdList = event.detail.value;
+    if (event.detail.value.length === this.data.deviceList.length) {
+      this.setData({
+        allSelect: true
+      })
+    } else {
+      this.setData({
+        allSelect: false
+      })
+    }
+    console.log(this.data.selectIdList);
+  },
+  allSelectChange(event) {
+    console.log(event.detail)
+    this.data.selectIdList = [];
+    if (event.detail.value.length === 1) {
+      //全选
+      this.data.deviceList.forEach((v) => {
+        this.data.selectIdList.push(v.id);
+      })
+      this.setData({
+        singleSelect: true
+      })
+    } else {
+      //全不选
+      this.setData({
+        singleSelect: false
+      })
+    }
+    console.log(this.data.selectIdList)
+  },
+  cancelMulSelect(){
+    this.setData({
+      mulChoi: {
+        isMul: false,
+        mulChoiName: '多选设备'
+      }
+    })
+  },
+  batchOpen() {
+    // debugger
+    if(this.data.selectIdList.length===0){
+      wx.showToast({
+        title: '请选择操作设备',
+        icon: 'error',
+        duration: 1000,
+      })
+      return
+    }
+    
+    // debugger
+    // console.log(this.data.hardwareType);
+    this.setData({
+      hardwareType:this.data.hardwareType,
+      batchShow: true,
+      selectIdList: this.data.selectIdList,
+      deviceType:this.data.deviceType
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

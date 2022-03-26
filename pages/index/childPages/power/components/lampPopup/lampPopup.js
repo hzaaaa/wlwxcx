@@ -11,7 +11,7 @@ Component({
    */
   data: {
     
-    electric: null,
+    lampSate: null,
     powerOnMode: null,
   },
 
@@ -26,9 +26,9 @@ Component({
         powerOnMode
       })
     },
-    dianliuChange(event) {
+    liangdengChange(event) {
       console.log(event.detail);
-      this.data.electric = event.detail.value;
+      this.data.lampSate = event.detail.value;
     },
     
     confirmUpdate() {
@@ -40,7 +40,7 @@ Component({
       request('/weChat/batchEditing', {
         id: this.properties.ids.toString(),
         userState: this.data.userState,
-        
+        lampSate: this.data.lampSate,
         powerOnMode: this.data.powerOnMode,
         startTime,
         endTime

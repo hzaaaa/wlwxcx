@@ -53,11 +53,13 @@ mixinUtils({
     temperature:28,
   },
   addOne(){
+    if(this.data.temperature===30)return;
     this.setData({
       temperature:this.data.temperature+1
     })
   },
   reduceOne(){
+    if(this.data.temperature===19)return;
     this.setData({
       temperature:this.data.temperature-1
     })

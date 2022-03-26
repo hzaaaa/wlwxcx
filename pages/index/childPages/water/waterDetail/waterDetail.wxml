@@ -2,7 +2,9 @@
   <view class="head">
     <image class="xzjt" id='index' bindtap="gotoPage" src="/static/images/common/xzjt.png"></image>
     <view class="title">水表设置</view>
-    <view class="img"></view>
+    <view class="img">
+      <image src="/static/images/device/water.png"></image>
+    </view>
   </view>
   <view class="body">
     <view class="item">

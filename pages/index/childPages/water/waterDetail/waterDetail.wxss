@@ -21,6 +21,10 @@ page {
   background-color: #f8f8f8;
   margin-bottom: 36rpx;
   margin-top: 22rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .socket .body {
   margin-left: 28rpx;

@@ -1,9 +1,8 @@
-<!--pages/index/childPages/power/components/socketPopup/socketPopup.wxml-->
-<view class="yitiji-popup" style="display: {{isShow?'':'none'}}">
+<view class="kongtiao-popup" style="display: {{isShow?'':'none'}}">
   <!-- test -->
-  <view class="socket">
+  <view class="kongtiao">
     <view class="title">批量操作</view>
-    <image src="/static/images/common/close.png" class="close" bindtap="closePopup"/>
+    <image src="/static/images/common/close.png" class="close" bindtap="closePopup" />
     <view class="body">
       <view class="body-item">
         <view class="name">设备类型:</view>
@@ -15,38 +14,75 @@
           <switch color='#0068FF' checked="{{userState}}" bindchange="stateChange" />
         </view>
       </view>
-      <!-- <view class="body-item">
-        <view class="name">额定电流:</view>
-        <radio-group bindchange='dianliuChange'>
+      <view class="body-item">
+        <view class="name">空调温度:</view>
+        <view class="value">{{temperature}}°C</view>
+      </view>
+      <view class="temperatureC">
+        <slider min='19' max='30' bindchange='temperatureChange' value="{{temperature}}" backgroundColor="#33333333" activeColor='#0068FF' block-size='12' show-value='true' />
+        <view class="buttonC">
+          <view class="add" bindtap="addOne">
+            <image class="img" src="/static/images/common/shangla.png"></image>
+          </view>
+          <view class="add" bindtap="reduceOne">
+            <image class="img" src="/static/images/common/xiala.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class="body-item">
+        <view class="name">空调模式:</view>
+        <radio-group bindchange='modeChange2'>
           <view class="radioGC">
+            <view class="item">
+              <view class="radioC">
+                <radio color='#0068FF' value="1" checked="{{switch1Checked2}}" />
+              </view>
+              <view class="text">自动</view>
+            </view>
             <view class="item">
               <view class="radioC">
                 <radio color='#0068FF' value="2" checked="{{switch1Checked2}}" />
               </view>
-              <view class="text">2A</view>
+              <view class="text">制冷</view>
             </view>
             <view class="item">
               <view class="radioC">
-                <radio color='#0068FF' value="8" checked="{{switch1Checked2}}" />
+                <radio color='#0068FF' value="3" checked="{{switch1Checked2}}" />
               </view>
-              <view class="text">8A</view>
+              <view class="text">抽湿</view>
+            </view>
+
+          </view>
+          <view class="radioGC">
+
+            <view class="item">
+              <view class="radioC">
+                <radio color='#0068FF' value="4" checked="{{switch1Checked2}}" />
+              </view>
+              <view class="text">送风</view>
             </view>
             <view class="item">
               <view class="radioC">
-                <radio color='#0068FF' value="16" checked="{{switch1Checked2}}" />
+                <radio color='#0068FF' value="5" checked="{{switch1Checked2}}" />
               </view>
-              <view class="text">16A</view>
-            </view>
-            <view class="item">
-              <view class="radioC">
-                <radio color='#0068FF' value="30" checked="{{switch1Checked2}}" />
-              </view>
-              <view class="text">30A</view>
+              <view class="text">制热</view>
             </view>
           </view>
 
         </radio-group>
-      </view> -->
+      </view>
+      <view class="body-item">
+        <view class="name">空调风向:</view>
+        <view class="item-block-wrap">
+          <view wx:for='{{fengxiangList}}' bindtap="fengxiangChange" id='{{item.value}}' class="{{manualdirection===item.value?'item-block-active' :'item-block'}}">{{item.name}}</view>
+        </view>
+      </view>
+      <view class="body-item">
+        <view class="name">空调强度:</view>
+        <view class="item-block-wrap">
+          <view wx:for='{{qiangduList}}' bindtap="qiangduChange" id='{{item.value}}' class="{{volume===item.value?'item-block-active' :'item-block'}}">{{item.name}}</view>
+        </view>
+      </view>
       <view class="body-item">
         <view class="name">通电方式:</view>
         <radio-group bindchange='modeChange'>
