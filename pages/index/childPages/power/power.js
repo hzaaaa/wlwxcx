@@ -88,7 +88,8 @@ Page({
   selectCategoryTap(e) {
     // console.log(e);
     this.setData({
-      categoryId: e.currentTarget.id
+      categoryId: e.currentTarget.id,
+      hardwareType:e.currentTarget.dataset.hardwaretype
     })
     // debugger
     this.data.hardwareType = e.currentTarget.dataset.hardwaretype;

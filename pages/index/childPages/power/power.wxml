@@ -9,7 +9,7 @@
     <view class="title">控电中心</view>
     <view class="controler">
       <!-- 多选设备 -->
-      <view class="more-select" bindtap="switchMulChoi">{{mulChoi.mulChoiName}}</view>
+      <view class="more-select" hidden="{{categoryId===''||hardwareType==='6'}}" bindtap="switchMulChoi">{{mulChoi.mulChoiName}}</view>
       <!-- 设备位置列表 -->
       <view class="select-list">
         <picker class="select-item" mode='selector' bindchange="DevicePositionChange" id='campus' value="{{selectList.campus.index}}" range-key='spaceName' range="{{selectList.campus.array}}">

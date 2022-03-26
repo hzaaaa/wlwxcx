@@ -5,76 +5,76 @@ import mixinCommon from '../common.js'
 
 
 mixinUtils({
-  mixins:[mixinCommon],
+  mixins: [mixinCommon],
   /**
    * 页面的初始数据
    */
   data: {
-    deviceData:null,
-    editData:null
+    deviceData: null,
+    editData: null
   },
-  stateChange(event){
+  stateChange(event) {
     // debugger
-    this.data.editData.userState= event.detail.value?1:0;
+    this.data.editData.userState = event.detail.value ? 1 : 0;
     this.setData({
-      editData:this.data.editData
+      editData: this.data.editData
     })
     console.log(this.data.editData.userState);
   },
-  lampStateChange(event){
+  lampStateChange(event) {
     console.log(event.detail);
-    
-    this.data.lampSateArray= event.detail.value;
-    
+
+    this.data.lampSateArray = event.detail.value;
+
   },
-  modeChange(event){
+  modeChange(event) {
     console.log(event.detail);
-    this.data.editData.powerOnMode= event.detail.value;
+    this.data.editData.powerOnMode = event.detail.value;
     this.setData({
-      editData:this.data.editData
+      editData: this.data.editData
     })
   },
-  confirmUpdate(){
-    let str = this.getTimeStr(this.data.dateTime,this.data.dateTimeArray);
-    this.data.editData.startTime= str;
-    str = this.getTimeStr(this.data.dateTime1,this.data.dateTimeArray1);
-    this.data.editData.endTime= str;
-    
+  confirmUpdate() {
+    let str = this.getTimeStr(this.data.dateTime, this.data.dateTimeArray);
+    this.data.editData.startTime = str;
+    str = this.getTimeStr(this.data.dateTime1, this.data.dateTimeArray1);
+    this.data.editData.endTime = str;
+
     //初始化灯状态
-    let arr=[];
-    for(let i=0;i<this.data.editData.hardwareType>>>0;i++){
+    let arr = [];
+    for (let i = 0; i < this.data.editData.hardwareType >>> 0; i++) {
       arr.push(0);
     }
     //修改灯状态
-    let lampSateArray = this.data.lampSateArray||[];
-    for(let i=0;i<lampSateArray.length;i++){
-      if(lampSateArray[i]==='all'){
-        arr.forEach((v,i,arr)=>{
-          arr[i]=1;
+    let lampSateArray = this.data.lampSateArray || [];
+    for (let i = 0; i < lampSateArray.length; i++) {
+      if (lampSateArray[i] === 'all') {
+        arr.forEach((v, i, arr) => {
+          arr[i] = 1;
         })
         break;
       }
-      arr[lampSateArray[i]]=1;
+      arr[lampSateArray[i]] = 1;
     }
     console.log(arr);
-    this.data.editData.lampSate=arr.toString();
+    this.data.editData.lampSate = arr.toString();
     console.log(this.data.editData);
-    
-    request('/weChat/editLamp',this.data.editData,'POST').then(res=>{
+
+    request('/weChat/editLamp', this.data.editData, 'POST').then(res => {
       // debugger
-      if(res.code===0){
+      if (res.code === 0) {
         wx.showToast({
           title: '操作成功',
           icon: 'success',
           duration: 1000,
-          complete:()=>{
-            setTimeout(()=>{
+          complete: () => {
+            setTimeout(() => {
               this.gotoPage();
-            },1000)
+            }, 1000)
           }
         })
-        
-      }else{
+
+      } else {
         wx.showToast({
           title: '操作失败',
           icon: 'error',
@@ -88,7 +88,8 @@ mixinUtils({
    */
   onLoad() {
     // debugger
-    console.log('onload')
+    console.log('onload');
+
   },
 
   /**
@@ -103,12 +104,13 @@ mixinUtils({
    */
   onShow: function () {
     const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('acceptDataFromOpenerPage', data=> {
+    eventChannel.on('acceptDataFromOpenerPage', data => {
       console.log(data);
       this.setData({
-        deviceData:data.data,
-        editData:JSON.parse(JSON.stringify(data.data)) 
+        deviceData: data.data,
+        editData: JSON.parse(JSON.stringify(data.data))
       })
+      
     })
   },
 

@@ -37,7 +37,7 @@
 
       <checkbox-group bindchange='lampStateChange'>
         <view class="radioGC">
-          <view class="item">
+          <view class="item" >
             <view class="radioC">
               <label>
                 <checkbox color='#0068FF' value="0" checked="{{select1}}" />
@@ -45,7 +45,7 @@
             </view>
             <view class="text">一灯</view>
           </view>
-          <view class="item">
+          <view class="item"  style="display:{{deviceData.lampType<2?'none':'flex'}}">
             <view class="radioC">
               <label>
                 <checkbox color='#0068FF' value="1" checked="{{select2}}" />
@@ -53,7 +53,7 @@
             </view>
             <view class="text">二灯</view>
           </view>
-          <view class="item">
+          <view class="item" style="display:{{deviceData.lampType<3?'none':'flex'}}">
             <view class="radioC">
               <label>
                 <checkbox color='#0068FF' value="2" checked="{{select3}}" />
@@ -61,7 +61,7 @@
             </view>
             <view class="text">三灯</view>
           </view>
-          <view class="item">
+          <view class="item" style="display:{{deviceData.lampType<3?'none':'flex'}}">
             <view class="radioC">
               <label>
                 <checkbox color='#0068FF' value="all" checked="{{switch1Checked4}}" />
