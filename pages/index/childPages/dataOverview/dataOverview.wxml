@@ -1,0 +1,51 @@
+<!--pages/index/childPages/dataOverview/dataOverview.wxml-->
+<view class="data">
+  <view class="select-list">
+    <picker class="select-item" mode='selector' bindchange="DevicePositionChange" id='campus' value="{{selectList.campus.index}}" range-key='spaceName' range="{{selectList.campus.array}}">
+      <view class="picker">
+        {{selectList.campus.array[selectList.campus.index].spaceName}}
+      </view>
+    </picker>
+    <picker class="select-item" style="display: {{selectList.campus.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='build' value="{{selectList.build.index}}" range-key='spaceName' range="{{selectList.build.array}}">
+      <view class="picker">
+        {{selectList.build.array[selectList.build.index].spaceName}}
+      </view>
+    </picker>
+    <picker class="select-item" style="display: {{selectList.build.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='floor' value="{{selectList.floor.index}}" range-key='spaceName' range="{{selectList.floor.array}}">
+      <view class="picker">
+        {{selectList.floor.array[selectList.floor.index].spaceName}}
+      </view>
+    </picker>
+    <picker class="select-item" style="display: {{selectList.floor.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='room' value="{{selectList.room.index}}" range-key='spaceName' range="{{selectList.room.array}}">
+      <view class="picker">
+        {{selectList.room.array[selectList.room.index].spaceName}}
+      </view>
+    </picker>
+
+
+  </view>
+  <view class="table-wrap">
+    <view class="table">
+      <view class="th">
+        <view class="tc">设备</view>
+        <view class="tc">总数</view>
+        <view class="tc">运行中</view>
+        <view class="tc">未使用</view>
+        <view class="tc">在线</view>
+      </view>
+      <view class="tr" wx:for="{{deviceList}}">
+        <view class="tc">{{item.deviceType}}</view>
+        <view class="tc">{{item.totalEquipment}}</view>
+        <view class="tc">{{item.openStatus}}</view>
+        <view class="tc">{{item.offState}}</view>
+        <view class="tc">{{item.onLine}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="deviceStatistics">
+    <view class="title">设备统计</view>
+    <view class="echarts">
+      <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </view>
+</view>

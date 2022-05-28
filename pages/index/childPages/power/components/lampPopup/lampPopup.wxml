@@ -29,7 +29,7 @@
               <view class="radioC">
                 <radio color='#0068FF' value="1,1,1" checked="{{switch1Checked2}}" />
               </view>
-              <view class="text">全开</view>
+              <view class="text">全选</view>
             </view>
             
           </view>

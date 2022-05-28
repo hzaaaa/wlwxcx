@@ -1,0 +1,154 @@
+<!--pages/index/childPages/debugging/debugging.wxml-->
+<view class="install">
+  <view class="block">
+    <view class="head">
+      <view class="name">IMEI:</view>
+      <input class="input" placeholder="请输入IMEI" value="{{imei}}" id='imei' 	bindinput='input'></input>
+      <image src='/static/images/common/saoma.png' class="scan" bindtap="scanCode"></image>
+      <!-- <view ></view> -->
+    </view>
+    <view class="head">
+      <view class="name">硬件品类:</view>
+      <picker mode='selector' bindchange="categoryChange" value="{{categoryIndex}}" range-key='deviceType' range="{{categoryList}}">
+        <view class="input" style="width: 530rpx;">
+          <view class="picker">
+            {{categoryList[categoryIndex].deviceType}}
+          </view>
+          <image class="xiala" src="/static/images/common/xiala.png"></image>
+        </view>
+
+      </picker>
+    </view>
+    <view class="head">
+      <view class="name">设备类型:</view>
+      <picker mode='selector' bindchange="typeChange" value="{{typeIndex}}" range-key='device_type' range="{{typeList}}">
+        <view class="input" style="width: 530rpx;">
+          <view class="picker">
+            {{typeList[typeIndex].device_type}}
+          </view>
+          <image class="xiala" src="/static/images/common/xiala.png"></image>
+        </view>
+
+      </picker>
+    </view>
+    <view class="head">
+      <view class="name">设备名称:</view>
+      <input class="input2" placeholder="请输入设备名称" value="{{device_name}}" id='device_name' 	bindinput='input'></input>
+    </view>
+    <view class="head">
+      <view class="name">设备位置:</view>
+      <picker class="select-item" mode='selector' bindchange="DevicePositionChange" id='campus' value="{{selectList.campus.index}}" range-key='spaceName' range="{{selectList.campus.array}}">
+          <view class="item-value">
+            {{selectList.campus.array[selectList.campus.index].spaceName}}
+          </view>
+        </picker>
+        <picker class="select-item" style="display: {{selectList.campus.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='build' value="{{selectList.build.index}}" range-key='spaceName' range="{{selectList.build.array}}">
+          <view class="item-value">
+            {{selectList.build.array[selectList.build.index].spaceName}}
+          </view>
+        </picker>
+        <picker class="select-item" style="display: {{selectList.build.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='floor' value="{{selectList.floor.index}}" range-key='spaceName' range="{{selectList.floor.array}}">
+          <view class="item-value">
+            {{selectList.floor.array[selectList.floor.index].spaceName}}
+          </view>
+        </picker>
+        <picker class="select-item" style="display: {{selectList.floor.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='room' value="{{selectList.room.index}}" range-key='spaceName' range="{{selectList.room.array}}">
+          <view class="item-value">
+            {{selectList.room.array[selectList.room.index].spaceName}}
+          </view>
+        </picker>
+    </view>
+    <!-- <view class="head">
+      <view class="name">设备状态:</view>
+      <view class="stateList">
+        <view class="selected">开</view>
+        <view class="unselected">关</view>
+      </view>
+    </view> -->
+    <view class="head">
+      <view class="name">绑定人:</view>
+      <view class="personListC">
+        <view wx:for="{{personList}}" class="personItem">
+          <picker mode='selector' bindchange="personChange" id='{{index}}' value="{{item.userIndex}}" range-key='username' range="{{userList}}">
+            <view class="input">
+              <view class="picker">
+                {{userList[item.userIndex].username}}
+              </view>
+              <image class="xiala" src="/static/images/common/xiala.png"></image>
+            </view>
+
+          </picker>
+          <image hidden="{{index!==personList.length-1}}" src='/static/images/common/jiahao.png' class="add" bindtap="addPerson"></image>
+          <image hidden="{{index===personList.length-1}}" src='/static/images/common/jianhao.png' id='{{index}}' class="add" bindtap="reducePerson"></image>
+        </view>
+      </view>
+
+
+    </view>
+    <view class="footer">
+      <view class="confirm" bindtap='confirmTap'>确认</view>
+      <view class="cancel" bindtap="gotoIndex">取消</view>
+    </view>
+
+  </view>
+  <view hidden='{{!modelPopupShow}}'>
+    <view class="modeConfirm">
+      <view class="popup">
+        <view class="title">模式确认</view>
+        <image src="/static/images/common/close.png" class="close" bindtap="closeModelPopup" />
+        <view class="red-word">请确认空调工作状态是否正确？</view>
+        <view class="stateList">
+          <view class="item">
+            <view class="name">模式:</view>
+            <view class="value">制冷模式</view>
+          </view>
+          <view class="item">
+            <view class="name">温度:</view>
+            <view class="value">26℃</view>
+          </view>
+        </view>
+        <view class="footer">
+          <view class="cancel" bindtap="noRight">不正确</view>
+          <view class="confirm" bindtap="right">正确</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view hidden='{{!redPopupShow}}'>
+    <view class="infra-red">
+      <view class="popup">
+        <view class="title">关联红外</view>
+        <image src="/static/images/common/close.png" class="close" bindtap="closeRedPopup" />
+        <view class="selectList">
+          <view class="item">
+            <view class="name">设备品牌:</view>
+            <picker mode='selector' bindchange="brandChange" value="{{brandIndex}}" range-key='brand_cn' range="{{brandList}}">
+              
+              <view class="input" >
+                <view class="picker">
+                  {{brandList[brandIndex].brand_cn}}
+                </view>
+                <image class="xiala" src="/static/images/common/xiala.png"></image>
+              </view>
+            </picker>
+          </view>
+          <view class="item">
+            <view class="name">设备型号:</view>
+            <picker mode='selector' bindchange="modelChange" value="{{modelIndex}}" range-key='model' range="{{modelList}}">
+              
+              <view class="input" >
+                <view class="picker">
+                  {{modelList[modelIndex].model}}
+                </view>
+                <image class="xiala" src="/static/images/common/xiala.png"></image>
+              </view>
+            </picker>
+          </view>
+
+        </view>
+        <view class="sendCommand" bindtap="sendCommand">发送指令</view>
+      </view>
+    </view>
+  </view>
+</view>

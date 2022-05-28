@@ -1,0 +1,95 @@
+<view class="kongtiao">
+  <view class="block">
+    <view class="head">
+      <view class="name">IMEI:</view>
+      <view class="value">{{imei}}</view>
+    </view>
+    <view class="head">
+      <view class="name">设备类型:</view>
+      <view class="value">{{name}}</view>
+    </view>
+    <view class="head">
+      <view class="name">操作:</view>
+      <view class="selectList">
+        <view class="{{remotePowerOnSuccess?'green':'select'}}" bindtap="remotePowerOn">远程通电</view>
+        <view class="{{remotePowerOffSuccess?'green':'unselect'}}" bindtap="remotePowerOff">远程断电</view>
+        <view class="{{bluetoothPowerOnSuccess?'green':'unselect'}}" bindtap="bluetoothPowerOn">蓝牙通电</view>
+        <view class="{{bluetoothPowerOffSuccess?'green':'unselect'}}" bindtap="bluetoothPowerOff">蓝牙断电</view>
+      </view>
+    </view>
+    <view class="head">
+      <view class="name">红外:</view>
+      <view class="selectList">
+        <view hidden="{{hardwareType==='8'}}" class="select" bindtap="openRedPopup">调试红外</view>
+        <view hidden="{{hardwareType!=='8'}}" class="select" bindtap="yitijiOn">开</view>
+        <view hidden="{{hardwareType!=='8'}}" class="unselect" bindtap="yitijiOff">关</view>
+
+      </view>
+    </view>
+    <view class="footer">
+      <view class="over" bindtap="debuggingOver">调试完成</view>
+      <view class="cancel" bindtap="debuggingOver">取消</view>
+    </view>
+  </view>
+  <view hidden='{{!modelPopupShow}}'>
+    <view class="modeConfirm">
+      <view class="popup">
+        <view class="title">模式确认</view>
+        <image src="/static/images/common/close.png" class="close" bindtap="closeModelPopup" />
+        <view class="red-word">请确认空调工作状态是否正确？</view>
+        <view class="stateList">
+          <view class="item">
+            <view class="name">模式:</view>
+            <view class="value">制冷模式</view>
+          </view>
+          <view class="item">
+            <view class="name">温度:</view>
+            <view class="value">26℃</view>
+          </view>
+        </view>
+        <view class="footer">
+          <view class="cancel" bindtap="noRight">不正确</view>
+          <view class="confirm" bindtap="right">正确</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view hidden='{{!redPopupShow}}'>
+    <view class="infra-red">
+      <view class="popup">
+        <view class="title">关联红外</view>
+        <image src="/static/images/common/close.png" class="close" bindtap="closeRedPopup" />
+        <view class="selectList">
+          <view class="item">
+            <view class="name">设备品牌:</view>
+            <picker mode='selector' bindchange="brandChange" value="{{brandIndex}}" range-key='brand_cn' range="{{brandList}}">
+              
+              <view class="input" >
+                <view class="picker">
+                  {{brandList[brandIndex].brand_cn}}
+                </view>
+                <image class="xiala" src="/static/images/common/xiala.png"></image>
+              </view>
+            </picker>
+          </view>
+          <view class="item">
+            <view class="name">设备型号:</view>
+            <picker mode='selector' bindchange="modelChange" value="{{modelIndex}}" range-key='model' range="{{modelList}}">
+              
+              <view class="input" >
+                <view class="picker">
+                  {{modelList[modelIndex].model}}
+                </view>
+                <image class="xiala" src="/static/images/common/xiala.png"></image>
+              </view>
+            </picker>
+          </view>
+
+        </view>
+        <view class="sendCommand" bindtap="sendCommand">发送指令</view>
+      </view>
+    </view>
+  </view>
+
+</view>

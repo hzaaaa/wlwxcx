@@ -13,17 +13,17 @@
             {{selectList.campus.array[selectList.campus.index].spaceName}}
           </view>
         </picker>
-        <picker class="select-item" mode='selector' bindchange="DevicePositionChange" id='build' value="{{selectList.build.index}}" range-key='spaceName' range="{{selectList.build.array}}">
+        <picker class="select-item" style="display: {{selectList.campus.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='build' value="{{selectList.build.index}}" range-key='spaceName' range="{{selectList.build.array}}">
           <view class="picker">
             {{selectList.build.array[selectList.build.index].spaceName}}
           </view>
         </picker>
-        <picker class="select-item" mode='selector' bindchange="DevicePositionChange" id='floor' value="{{selectList.floor.index}}" range-key='spaceName' range="{{selectList.floor.array}}">
+        <picker class="select-item" style="display: {{selectList.build.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='floor' value="{{selectList.floor.index}}" range-key='spaceName' range="{{selectList.floor.array}}">
           <view class="picker">
             {{selectList.floor.array[selectList.floor.index].spaceName}}
           </view>
         </picker>
-        <picker class="select-item" mode='selector' bindchange="DevicePositionChange" id='room' value="{{selectList.room.index}}" range-key='spaceName' range="{{selectList.room.array}}">
+        <picker class="select-item" style="display: {{selectList.floor.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='room' value="{{selectList.room.index}}" range-key='spaceName' range="{{selectList.room.array}}">
           <view class="picker">
             {{selectList.room.array[selectList.room.index].spaceName}}
           </view>

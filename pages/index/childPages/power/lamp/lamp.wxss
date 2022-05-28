@@ -33,7 +33,7 @@ page {
   display: flex;
 }
 .socket .body .item .item-key {
-  font-size: 14px;
+  font-size: 28rpx;
   font-family: PingFang SC, PingFang SC-Medium;
   font-weight: 500;
   text-align: left;
@@ -43,7 +43,7 @@ page {
   flex-shrink: 0;
 }
 .socket .body .item .item-key1 {
-  font-size: 14px;
+  font-size: 28rpx;
   font-family: PingFang SC, PingFang SC-Medium;
   font-weight: 500;
   text-align: left;
@@ -53,7 +53,7 @@ page {
 .socket .body .item .item-value {
   margin-left: 12rpx;
   opacity: 0.7;
-  font-size: 14px;
+  font-size: 28rpx;
   font-family: PingFang SC, PingFang SC-Regular;
   font-weight: 400;
   text-align: left;
@@ -66,6 +66,7 @@ page {
 }
 .socket .body .item .radioGC {
   display: flex;
+  /* margin-top: 5px; */
 }
 .socket .body .item .radioGC .item {
   display: flex;
@@ -77,22 +78,23 @@ page {
 }
 .socket .body .item .radioGC .item .text {
   opacity: 0.7;
-  font-size: 14px;
+  font-size: 28rpx;
   font-family: PingFang SC, PingFang SC-Regular;
   font-weight: 400;
   text-align: left;
   color: #333333;
   margin-left: -10rpx;
+  margin-top: 2px;
 }
 .socket .footer .confirm {
   width: 384rpx;
   height: 70rpx;
   background: #0068ff;
-  border-radius: 10px;
+  border-radius: 20rpx;
   margin-top: 48rpx;
   margin-left: auto ;
   margin-right: auto ;
-  font-size: 14px;
+  font-size: 28rpx;
   font-family: PingFang SC, PingFang SC-Medium;
   font-weight: 500;
   text-align: center;
@@ -101,7 +103,7 @@ page {
 }
 .socket .footer .text {
   margin: 28rpx auto;
-  font-size: 12px;
+  font-size: 24rpx;
   font-family: PingFang SC, PingFang SC-Regular;
   font-weight: 400;
   text-align: center;

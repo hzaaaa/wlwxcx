@@ -1,0 +1,7 @@
+
+
+<view style="margin-top: 100px;">
+  <button bindtap="openBluetoothAdapter">开始扫描</button>
+  <button bindtap="closeBluetoothAdapter">关闭蓝牙</button>
+</view>
+

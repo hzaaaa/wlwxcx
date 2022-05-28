@@ -1,7 +1,11 @@
 // pages/index/childPages/powercontrol/power.js
 import request from '../../../../utils/request.js'
 import eventBus from '../../../../utils/eventBus.js'
-Page({
+
+import mixinUtils from '../../../../utils/mixinUtils.js'
+import mixinCommon from '../mixinSelect.js'
+mixinUtils({
+  mixins:[mixinCommon],
   gotoPage(e) {
     if (e.currentTarget.id === 'index') {
       wx.reLaunch({
@@ -61,36 +65,7 @@ Page({
     singleSelect: false,
     selectIdList: [],
 
-    selectList: {
-      campus: {
-        index: 0,
-        array: [{
-          "id": "", // 位置id
-          "spaceName": "全部" //位置的名字
-        }]
-      },
-      build: {
-        index: 0,
-        array: [{
-          "id": "", // 位置id
-          "spaceName": "全部" //位置的名字
-        }]
-      },
-      floor: {
-        index: 0,
-        array: [{
-          "id": "", // 位置id
-          "spaceName": "全部" //位置的名字
-        }]
-      },
-      room: {
-        index: 0,
-        array: [{
-          "id": "", // 位置id
-          "spaceName": "全部" //位置的名字
-        }]
-      },
-    },
+    
 
 
     deviceList: null,
@@ -188,7 +163,7 @@ Page({
         //有校区
         // 
         campusList.data = [{
-          spaceName: '全部',
+          spaceName: '全校',
           id: ''
         }, ...campusList.data]
         this.data.selectList.campus.array = campusList.data;
@@ -228,95 +203,21 @@ Page({
       console.log('获取设备列表失败', err)
     })
   },
-  getIdFromList() {
-    let ids = [];
-    ids.push(this.data.selectList.campus.array[this.data.selectList.campus.index].id);
-    ids.push(this.data.selectList.build.array[this.data.selectList.build.index].id);
-    ids.push(this.data.selectList.floor.array[this.data.selectList.floor.index].id);
-    ids.push(this.data.selectList.room.array[this.data.selectList.room.index].id);
-    return ids;
-  },
-  DevicePositionChange(event) {
-
-    let currentName = event.currentTarget.id;
-    let index = event.detail.value;
-    let id = this.data.selectList[currentName].array[index].id;
-    // 
-    //更新index状态
-    this.data.selectList[currentName].index = index;
-    this.setData({
-      selectList: this.data.selectList
-    })
-    //更新其他位置列表
-    this.getNextInfo(currentName, id)
-
-
-    //改变设备列表
-    eventBus.on('updateDeviceList', this, _ => {
-      // debugger
-      let pO = this.getIdFromList();
-      this.queryDeviceList(this.data.categoryId, ...pO);
-      eventBus.remove('updateDeviceList', this)
-
-    })
-
-  },
-  getNextInfo(parentName, id) {
-
-    let currentName = '';
-    switch (parentName) {
-      case 'campus':
-        currentName = 'build';
-        break;
-      case 'build':
-        currentName = 'floor';
-        break;
-      case 'floor':
-        currentName = 'room';
-        break;
-      case 'room':
-        currentName = '';
-        break;
-      default:
-        currentName = '';
-    }
-    if (currentName === '') {
-      eventBus.emit('updateDeviceList')
-      return;
-    }
-
-    request('/weChat/spaceName', {
-      id
-    }).then(res => {
-      res.data = [{
-        spaceName: '全部',
-        id: ''
-      }, ...res.data]
-      this.data.selectList[currentName].array = res.data;
-      this.data.selectList[currentName].index = 0;
-
-      this.setData({
-        selectList: this.data.selectList
-      })
-
-      // debugger
-      this.getNextInfo(currentName, res.data[0].id)
-    }, err => {
-      console.log(err)
-    })
-  },
+  
+  
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.queryDeviceList(this.data.categoryId, ...this.getIdFromList())
   },
 
   /**

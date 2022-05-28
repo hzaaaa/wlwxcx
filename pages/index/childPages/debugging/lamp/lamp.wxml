@@ -1,0 +1,67 @@
+<view class="kongkai">
+  <view class="block">
+    <view class="head">
+      <view class="name">IMEI:</view>
+      <view class="value">{{imei}}</view>
+    </view>
+    <view class="head">
+      <view class="name">设备类型:</view>
+      <view class="value">灯</view>
+    </view>
+    <view class="head">
+      <view class="name">亮灯方式:</view>
+      <view class="radioGC">
+        <checkbox-group style="display: flex;" bindchange='lampStateChange'>
+
+          <view class="item">
+            <view class="radioC">
+              <label>
+                <checkbox color='#0068FF' value="0" checked="{{select1}}" />
+              </label>
+            </view>
+            <view class="text">一灯</view>
+          </view>
+          <view class="item">
+            <view class="radioC">
+              <label>
+                <checkbox color='#0068FF' value="1" checked="{{select2}}" />
+              </label>
+            </view>
+            <view class="text">二灯</view>
+          </view>
+          <view class="item">
+            <view class="radioC">
+              <label>
+                <checkbox color='#0068FF' value="2" checked="{{select3}}" />
+              </label>
+            </view>
+            <view class="text">三灯</view>
+          </view>
+
+
+
+        </checkbox-group>
+        <checkbox-group style="display: flex;" bindchange='lampStateChange2'>
+          <view class="item">
+            <view class="radioC">
+              <label>
+                <checkbox color='#0068FF' value="all" checked="{{checkedAll}}" />
+              </label>
+            </view>
+            <view class="text">全选</view>
+          </view>
+        </checkbox-group>
+      </view>
+    </view>
+    <view class="head">
+      <view class="name">操作:</view>
+      <view class="{{openSuccess?'green':'open'}}" bindtap="openPower">开</view>
+      <view class="{{closeSuccess?'green':'close'}}" bindtap="closePower">关</view>
+    </view>
+
+    <view class="footer">
+      <view class="over" bindtap="debuggingOver">调试完成</view>
+      <view class="cancel" bindtap="debuggingOver">取消</view>
+    </view>
+  </view>
+</view>

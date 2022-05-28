@@ -35,7 +35,7 @@
       <view class="item-key">亮灯方式:</view>
       <!-- <view class="item-value">111102515111</view> -->
 
-      <checkbox-group bindchange='lampStateChange'>
+      <!-- <checkbox-group bindchange='lampStateChange'>
         <view class="radioGC">
           <view class="item" >
             <view class="radioC">
@@ -67,11 +67,53 @@
                 <checkbox color='#0068FF' value="all" checked="{{switch1Checked4}}" />
               </label>
             </view>
-            <view class="text">全开</view>
+            <view class="text">全选</view>
           </view>
         </view>
 
-      </checkbox-group>
+      </checkbox-group> -->
+      <view class="radioGC">
+        <checkbox-group style="display: flex;" bindchange='lampStateChange'>
+
+          <view class="item" >
+            <view class="radioC">
+              <label>
+                <checkbox color='#0068FF' value="0" checked="{{select1}}" />
+              </label>
+            </view>
+            <view class="text">一灯</view>
+          </view>
+          <view class="item"  style="display:{{deviceData.lampType<2?'none':'flex'}}">
+            <view class="radioC">
+              <label>
+                <checkbox color='#0068FF' value="1" checked="{{select2}}" />
+              </label>
+            </view>
+            <view class="text">二灯</view>
+          </view>
+          <view class="item" style="display:{{deviceData.lampType<3?'none':'flex'}}">
+            <view class="radioC">
+              <label>
+                <checkbox color='#0068FF' value="2" checked="{{select3}}" />
+              </label>
+            </view>
+            <view class="text">三灯</view>
+          </view>
+
+
+
+        </checkbox-group>
+        <checkbox-group style="display: flex;" bindchange='lampStateChange2'>
+          <view class="item" style="display:{{deviceData.lampType<2?'none':'flex'}}">
+            <view class="radioC">
+              <label>
+                <checkbox color='#0068FF' value="all" checked="{{checkedAll}}" />
+              </label>
+            </view>
+            <view class="text">全选</view>
+          </view>
+        </checkbox-group>
+      </view>
 
     </view>
     <view class="item">
@@ -122,7 +164,7 @@
   <view class="footer">
     <view class="confirm" bindtap="confirmUpdate">确认</view>
     <view class="text">
-      设备有问题?点击<text style="color: #0068FF;">保修</text>
+      设备有问题?点击<text style="color: #0068FF;" bindtap="baoxiu">报修</text>
     </view>
   </view>
 </view>

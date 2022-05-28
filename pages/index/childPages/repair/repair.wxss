@@ -1,0 +1,117 @@
+page {
+  height: 100%;
+}
+page .repair {
+  height: 100%;
+  background: #f8f8f8;
+  overflow: hidden;
+}
+page .repair .content {
+  border-radius: 10px;
+  margin: 24rpx;
+  margin-top: 24rpx;
+  height: calc(100% - 48rpx);
+  background-color: #fff;
+  overflow: hidden;
+}
+page .repair .content .wrap {
+  margin-top: 36rpx;
+  margin-left: 24rpx;
+}
+page .repair .content .wrap .scan {
+  float: right;
+  margin-right: 70rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+page .repair .content .wrap .item {
+  display: flex;
+  margin-bottom: 24rpx;
+}
+page .repair .content .wrap .item .name {
+  width: 176rpx;
+  font-size: 14px;
+  font-family: PingFang SC, PingFang SC-Medium;
+  font-weight: 500;
+  text-align: right;
+  color: #333333;
+  line-height: 60rpx;
+}
+page .repair .content .wrap .item .item-value {
+  margin-left: 12rpx;
+  margin-top: 10rpx;
+  opacity: 0.7;
+  font-size: 14px;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #0068FF;
+}
+page .repair .content .wrap .item .select {
+  width: 360rpx;
+  height: 60rpx;
+  margin-left: 12rpx;
+  box-sizing: border-box;
+  border: 1px solid hsla(0, 0%, 20%, 0.1);
+  border-radius: 3px;
+}
+page .repair .content .wrap .item .select .picker {
+  opacity: 0.7;
+  font-size: 12px;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #333333;
+  margin-left: 24rpx;
+  margin-top: 14rpx;
+}
+page .repair .content .wrap .item .input {
+  margin-left: 12rpx;
+  width: 460rpx;
+  height: 60rpx;
+  background: #ffffff;
+  border: 1px solid #3333331a;
+  border-radius: 3px;
+  position: relative;
+}
+page .repair .content .wrap .item .input .picker {
+  font-size: 14px;
+  font-family: PingFang SC, PingFang SC-Medium;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 10rpx ;
+  color: #333333;
+  line-height: 60rpx;
+}
+page .repair .content .wrap .item .input .xiala {
+  position: absolute;
+  right: 24rpx;
+  top: 16rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+page .repair .content .text {
+  width: 602rpx;
+  height: 162rpx;
+  background: #ffffff;
+  border: 1px solid #3333331e;
+  border-radius: 3px;
+  overflow: auto;
+}
+page .repair .content .text-p {
+  font-size: 14px;
+}
+page .repair .content .submit {
+  margin-top: 378rpx;
+  margin-left: 160rpx;
+  width: 384rpx;
+  height: 70rpx;
+  background: #0068ff;
+  border-radius: 10px;
+  line-height: 70rpx;
+  font-size: 14px;
+  font-family: PingFang SC, PingFang SC-Medium;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+}

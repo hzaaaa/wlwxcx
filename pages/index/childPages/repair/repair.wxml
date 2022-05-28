@@ -1,0 +1,91 @@
+<view class="repair">
+  <view class="content">
+    <view class="wrap">
+      <image src='/static/images/common/saoma.png' class="scan" bindtap="scanCode"></image>
+      <view class="item">
+        <view class="name">设备类型:</view>
+
+        <picker class="select-item" mode='selector' bindchange="typeChange" id='type' value="{{typeIndex}}" range-key='deviceType' range="{{deviceCategoryList}}">
+          <!-- <view class="item-value">
+            {{deviceCategoryList[typeIndex].deviceType}}
+            
+          </view> -->
+          <view class="input" style="width: 360rpx;">
+            <view class="picker">
+              {{deviceCategoryList[typeIndex].deviceType}}
+            </view>
+            <image class="xiala" src="/static/images/common/xiala.png"></image>
+          </view>
+        </picker>
+
+
+      </view>
+
+      <view class="item">
+        <view class="name">设备位置:</view>
+
+        <picker class="select-item" mode='selector' bindchange="DevicePositionChange" id='campus' value="{{selectList.campus.index}}" range-key='spaceName' range="{{selectList.campus.array}}">
+          <view class="item-value">
+            {{selectList.campus.array[selectList.campus.index].spaceName}}
+          </view>
+        </picker>
+        <picker class="select-item" style="display: {{selectList.campus.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='build' value="{{selectList.build.index}}" range-key='spaceName' range="{{selectList.build.array}}">
+          <view class="item-value">
+            {{selectList.build.array[selectList.build.index].spaceName}}
+          </view>
+        </picker>
+        <picker class="select-item" style="display: {{selectList.build.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='floor' value="{{selectList.floor.index}}" range-key='spaceName' range="{{selectList.floor.array}}">
+          <view class="item-value">
+            {{selectList.floor.array[selectList.floor.index].spaceName}}
+          </view>
+        </picker>
+        <picker class="select-item" style="display: {{selectList.floor.index===0?'none':''}}" mode='selector' bindchange="DevicePositionChange" id='room' value="{{selectList.room.index}}" range-key='spaceName' range="{{selectList.room.array}}">
+          <view class="item-value">
+            {{selectList.room.array[selectList.room.index].spaceName}}
+          </view>
+        </picker>
+        <!-- <view class="item-value"><text style="color:#0068FF">修改</text></view> -->
+
+
+      </view>
+      <view class="item">
+        <view class="name">设备名称:</view>
+        <picker class="select-item" mode='selector' bindchange="deviceChange" id='device' value="{{deviceIndex}}" range-key='deviceName' range="{{deviceList}}">
+          <!-- <view class="item-value">
+            {{deviceList[deviceIndex].deviceName}}
+            
+          </view> -->
+          <view class="input" style="width: 414rpx;">
+            <view class="picker">
+              {{deviceList[deviceIndex].deviceName}}
+            </view>
+            <image class="xiala" src="/static/images/common/xiala.png"></image>
+          </view>
+        </picker>
+
+      </view>
+      <view class="item">
+        <view class="name">问题出现时间:</view>
+        <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+          <!-- <view class="item-value">
+            {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}
+            
+          </view> -->
+          <view class="input" style="width: 414rpx;">
+            <view class="picker">
+              {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}
+            </view>
+            <image class="xiala" src="/static/images/common/xiala.png"></image>
+          </view>
+        </picker>
+
+      </view>
+      <view class="text">
+        <textarea bindinput="bindTextAreaBlur" placeholder-class='text-p' placeholder="问题描述" />
+      </view>
+      <view class="submit" bindtap="submitTap">
+        提交
+      </view>
+    </view>
+  </view>
+</view>

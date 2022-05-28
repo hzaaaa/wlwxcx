@@ -1,0 +1,54 @@
+<view class="appointment">
+  <view class="head-input">
+    <picker mode='selector' bindchange="categoryChange" value="{{categoryIndex}}" range-key='deviceType' range="{{categoryList}}">
+        <view class="input" style="width: 232rpx;">
+          <view class="picker">
+            {{categoryList[categoryIndex].deviceType}}
+          </view>
+          <image class="xiala" src="/static/images/common/xiala.png"></image>
+        </view>
+
+      </picker>
+
+    <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+
+      <view class="input" style="width: 312rpx;">
+        <view class="picker">
+          <!-- {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}} -->
+          {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}}
+        </view>
+        <image class="xiala" src="/static/images/common/xiala.png"></image>
+      </view>
+    </picker>
+
+
+  </view>
+  <view class="body">
+    <view class="one-record" wx:for="{{recordList}}">
+      <view class="item-left">
+        <view class="name">预约通电时间:</view>
+        <view class="value">{{item.startDate}}</view>
+      </view>
+      <view class="item-right">
+        <view class="name">设备编号:</view>
+        <view class="value">{{item.id}}</view>
+      </view>
+      <view class="item-left">
+        <view class="name">预约断电时间:</view>
+        <view class="value">{{item.endDate}}</view>
+      </view>
+      <view class="item-right">
+        <view class="name">设备名称:</view>
+        <view class="value">{{item.deviceName}}</view>
+      </view>
+      <view class="item-left">
+        <view class="name">设备类型:</view>
+        <view class="value">{{item.typeName}}</view>
+      </view>
+      <view class="item-right">
+        <view class="name">设备位置:</view>
+        <view class="value">{{item.position}}</view>
+      </view>
+    </view>
+  </view>
+</view>

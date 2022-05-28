@@ -44,6 +44,7 @@ export default Behavior({
       this.setData({
         isShow: false
       })
+      this.triggerEvent('unshow')
     },
     changeDateTime(e) {
       this.setData({

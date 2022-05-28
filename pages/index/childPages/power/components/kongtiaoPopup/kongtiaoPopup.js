@@ -106,6 +106,11 @@ Component({
       let startTime = this.getTimeStr(this.data.dateTime, this.data.dateTimeArray);
 
       let endTime = this.getTimeStr(this.data.dateTime1, this.data.dateTimeArray1);
+      if(this.data.powerOnMode==='1'&&startTime>=endTime){
+        wx.$errorTip2('结束时间必须大于开始时间')
+        return;
+      }
+
       let {temperature,pattern,manualdirection,volume}=this.data;
       request('/weChat/batchEditing', {
         id: this.properties.ids.toString(),

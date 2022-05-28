@@ -38,6 +38,11 @@ mixinUtils({
     str = this.getTimeStr(this.data.dateTime1,this.data.dateTimeArray1);
     this.data.editData.endTime= str;
 
+    if(this.data.editData.powerOnMode==='1'&&this.data.editData.startTime>=this.data.editData.endTime){
+      wx.$errorTip2('结束时间必须大于开始时间')
+      return;
+    }
+
     console.log(this.data.editData);
     request('/weChat/editAirSwitch',this.data.editData,'POST').then(res=>{
       // debugger

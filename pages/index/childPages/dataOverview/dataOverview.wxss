@@ -1,0 +1,86 @@
+page {
+  background: #f8f8f8;
+  height: 100%;
+}
+page .data {
+  height: 100%;
+}
+page .data .select-list {
+  margin-top: 24rpx;
+  display: flex;
+}
+page .data .select-list .select-item {
+  margin-left: 30rpx;
+}
+page .data .picker {
+  font-size: 24rpx;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #0068ffbf;
+}
+page .data .table-wrap {
+  margin-left: 24rpx;
+  margin-top: 24rpx;
+  width: 702rpx;
+  box-sizing: border-box;
+  height: 562rpx;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 36rpx;
+  overflow: auto;
+}
+page .data .table-wrap .table .th {
+  display: flex;
+  height: 70rpx;
+  background: #0066ff0e;
+  line-height: 70rpx;
+}
+page .data .table-wrap .table .th .tc {
+  flex: 1;
+  font-size: 14px;
+  font-family: PingFang SC, PingFang SC-Medium;
+  font-weight: 500;
+  text-align: center;
+  color: #333333;
+}
+page .data .table-wrap .table .tr:nth-child(odd) {
+  background: #0066ff0e;
+}
+page .data .table-wrap .table .tr {
+  display: flex;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+page .data .table-wrap .table .tr .tc {
+  flex: 1;
+  font-size: 12px;
+  font-family: PingFang SC, PingFang SC-Regular;
+  font-weight: 400;
+  text-align: center;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+page .data .deviceStatistics {
+  background: #ffffff;
+  border-radius: 10px;
+  margin-left: 24rpx;
+  margin-top: 24rpx;
+  width: 702rpx;
+  height: calc(100% - 700rpx);
+  overflow: hidden;
+}
+page .data .deviceStatistics .title {
+  margin-top: 24rpx;
+  margin-left: 24rpx;
+  font-size: 16px;
+  font-family: PingFang SC, PingFang SC-Medium;
+  font-weight: 500;
+  text-align: left;
+  color: #333333;
+}
+page .data .deviceStatistics .echarts {
+  height: calc(100% - 68rpx);
+}

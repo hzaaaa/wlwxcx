@@ -78,7 +78,7 @@
   <view class="footer">
     <view class="confirm" bindtap="confirmUpdate">确认</view>
     <view class="text">
-      设备有问题?点击<text style="color: #0068FF;">保修</text>
+      设备有问题?点击<text style="color: #0068FF;" bindtap="baoxiu">报修</text>
     </view>
   </view>
 </view>

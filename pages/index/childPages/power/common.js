@@ -6,11 +6,14 @@ export default{
     dateTime: null,
     dateTimeArray: null,
   },
-  gotoPage() {
-    // debugger
+  baoxiu(){
     wx.navigateTo({
-      url: '/pages/index/childPages/power/power',
+      url: '/pages/index/childPages/repair/repair?id='+this.data.editData.id,
     })
+  },
+  gotoPage() {
+    
+    wx.navigateBack();
   },
   changeDateTime(e) {
     this.setData({

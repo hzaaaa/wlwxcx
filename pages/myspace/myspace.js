@@ -10,7 +10,13 @@ Page({
     avatarUrl:wx.getStorageSync('avatarUrl'),
     nickName:wx.getStorageSync('nickName')
   },
-
+  goto(event){
+    // console.log(event.currentTarget.id)
+    let pageID = event.currentTarget.id;
+    wx.navigateTo({
+      url:`/pages/myspace/${pageID}/${pageID}`
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

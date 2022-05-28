@@ -49,6 +49,7 @@ page {
   font-family: PingFang SC, PingFang SC-Regular;
   font-weight: 400;
   color: #0068ffbf;
+  margin-right: 24rpx;
 }
 .power .head-color .banner {
   margin-top: 36rpx;
@@ -167,7 +168,7 @@ page {
 }
 .power .bottomC .blue-body {
   background: #0068ff;
-  font-size: 14px;
+  font-size: 28rpx;
   font-family: PingFang SC, PingFang SC-Medium;
   font-weight: 500;
   text-align: center;
@@ -175,7 +176,7 @@ page {
 }
 .power .bottomC .blue-border {
   border: 1px solid #0068ff;
-  font-size: 14px;
+  font-size: 28rpx;
   font-family: PingFang SC, PingFang SC-Regular;
   font-weight: 400;
   text-align: center;
@@ -186,7 +187,7 @@ page {
   margin-top: 25rpx;
   transform: scale(0.9);
   margin-right: -12rpx;
-  font-size: 16px;
+  font-size: 32rpx;
   font-family: PingFang SC, PingFang SC-Regular;
   font-weight: 400;
   text-align: left;

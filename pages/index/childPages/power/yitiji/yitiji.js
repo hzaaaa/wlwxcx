@@ -1,77 +1,78 @@
 // pages/index/childPages/power/socket/socket.js
-var dateTimePicker = require('../../../../../utils/dateTimePicker.js');
+import request from '../../../../../utils/request.js'
+import mixinUtils from '../../../../../utils/mixinUtils.js'
+import mixinCommon from '../common.js'
 
-Page({
-  gotoPage() {
-    wx.navigateTo({
-      url: '/pages/index/childPages/power/power',
-    })
-  },
+
+mixinUtils({
+  mixins:[mixinCommon],
   /**
    * 页面的初始数据
    */
   data: {
-    dateTime1: null,//时间所在数组位置
-    dateTimeArray1: null,//时间范维数组
-    dateTime: null,
-    dateTimeArray: null,
-
+    deviceData:null,
+    editData:null
   },
-  changeDateTime(e) {
+  stateChange(event){
+    // debugger
+    this.data.editData.userState= event.detail.value?1:0;
     this.setData({
-      dateTime: e.detail.value
-    });
+      editData:this.data.editData
+    })
+    console.log(this.data.editData.userState);
   },
-  changeDateTime1(e) {
-    this.setData({
-      dateTime1: e.detail.value
-    });
+  dianliuChange(event){
+    console.log(event.detail);
+    this.data.editData.electric= event.detail.value;
   },
-  changeDateTimeColumn(e) {
-    console.log(e)
-    var arr = this.data.dateTime,
-      dateArr = this.data.dateTimeArray;
-
-    arr[e.detail.column] = e.detail.value;
-    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
-
+  modeChange(event){
+    console.log(event.detail);
+    this.data.editData.powerOnMode= event.detail.value;
     this.setData({
-      dateTimeArray: dateArr,
-      dateTime: arr
-    });
+      editData:this.data.editData
+    })
   },
-  changeDateTimeColumn1(e) {
-    console.log(e)
-    var arr = this.data.dateTime1,
-      dateArr = this.data.dateTimeArray1;
+  confirmUpdate(){
+    let str = this.getTimeStr(this.data.dateTime,this.data.dateTimeArray);
+    this.data.editData.startTime= str;
+    str = this.getTimeStr(this.data.dateTime1,this.data.dateTimeArray1);
+    this.data.editData.endTime= str;
 
-    arr[e.detail.column] = e.detail.value;
-    dateArr[2] = dateTimePicker.getMonthDay(dateArr[0][arr[0]], dateArr[1][arr[1]]);
+    if(this.data.editData.powerOnMode==='1'&&this.data.editData.startTime>=this.data.editData.endTime){
+      wx.$errorTip2('结束时间必须大于开始时间')
+      return;
+    }
 
-    this.setData({
-      dateTimeArray1: dateArr,
-      dateTime1: arr
-    });
+    console.log(this.data.editData);
+    request('/weChat/editIntegratedMachine',this.data.editData,'POST').then(res=>{
+      // debugger
+      if(res.code===0){
+        wx.showToast({
+          title: '操作成功',
+          icon: 'success',
+          duration: 1000,
+          complete:()=>{
+            setTimeout(()=>{
+              this.gotoPage();
+            },1000)
+          }
+        })
+        
+      }else{
+        wx.showToast({
+          title: '操作失败',
+          icon: 'error',
+          duration: 1000,
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    // 获取完整的年月日 时分秒，以及默认显示的数组
-    var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
-    var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
-    // 精确到分的处理，将数组的秒去掉
-    var lastArray = obj.dateTimeArray.pop();
-    var lastTime = obj.dateTime.pop();
-    lastArray = obj1.dateTimeArray.pop();
-    lastTime = obj1.dateTime.pop();
-    console.log(obj)
-    this.setData({
-      dateTime: obj.dateTime,
-      dateTimeArray: obj.dateTimeArray,
-      dateTimeArray1: obj1.dateTimeArray,
-      dateTime1: obj1.dateTime
-    });
+    // debugger
+    console.log('onload')
   },
 
   /**
@@ -85,7 +86,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('acceptDataFromOpenerPage', data=> {
+      console.log(data);
+      this.setData({
+        deviceData:data.data,
+        editData:JSON.parse(JSON.stringify(data.data)) 
+      })
+    })
   },
 
   /**

@@ -1,0 +1,22 @@
+<view class="kongkai">
+  <view class="block">
+    <view class="head">
+      <view class="name">IMEI:</view>
+      <view class="value">{{imei}}</view>
+    </view>
+    <view class="head">
+      <view class="name">设备类型:</view>
+      <view class="value">{{name}}</view>
+    </view>
+    <view class="head">
+      <view class="name">操作:</view>
+      <view class="{{openSuccess?'green':'open'}}" bindtap="openPower">开</view>
+      <view class="{{closeSuccess?'green':'close'}}" bindtap="closePower">关</view>
+    </view>
+
+    <view class="footer">
+      <view class="over" bindtap="debuggingOver">调试完成</view>
+      <view class="cancel" bindtap="debuggingOver">取消</view>
+    </view>
+  </view>
+</view>

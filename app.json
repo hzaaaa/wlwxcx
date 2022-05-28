@@ -1,19 +1,31 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/myspace/myspace",
+    "pages/myspace/myRepair/myRepair",
+    "pages/myspace/useRecord/useRecord",
+    "pages/index/childPages/install/install",
+    "pages/index/childPages/debugging/debugging",
+    "pages/index/childPages/debugging/kongtiao/kongtiao",
+    "pages/index/childPages/debugging/kongkai/kongkai",
     "pages/index/childPages/water/water",
     "pages/index/childPages/power/power",
     "pages/index/childPages/power/socket/socket",
-    "pages/index/index",
-    "pages/login/login",
-    "pages/myspace/myspace",
+    
     "pages/index/childPages/power/yitiji/yitiji",
     "pages/index/childPages/power/kongkai/kongkai",
     "pages/scancode/scancode",
     "pages/index/childPages/power/lamp/lamp",
     "pages/index/childPages/power/kongtiao/kongtiao",
-    
     "pages/index/childPages/water/waterDetail/waterDetail",
-    "pages/index/childPages/power/lock/lock"
+    "pages/index/childPages/power/lock/lock",
+    "pages/index/childPages/dataOverview/dataOverview",
+    "pages/index/childPages/repair/repair",
+    "pages/myspace/myAppointment/myAppointment",
+    "pages/index/childPages/debugging/lamp/lamp",
+    "pages/index/childPages/testBT/testBT"
+    
   ],
   "tabBar": {
     "color": "#333",
@@ -46,6 +58,12 @@
     "navigationBarTitleText": "首页",
     "navigationBarTextStyle": "white",
     "navigationStyle": "custom"
+  },
+  "plugins": {
+    "myPlugin": {
+      "version": "1.2.0",
+      "provider": "wx8c85a8eeaad80bbf"
+    }
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

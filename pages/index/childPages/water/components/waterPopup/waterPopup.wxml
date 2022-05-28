@@ -17,7 +17,7 @@
       </view>
       
       <view class="body-item">
-        <view class="name">通电方式:</view>
+        <view class="name">通水方式:</view>
         <radio-group bindchange='modeChange'>
           <view class="radioGC">
             <view class="item">
@@ -36,7 +36,7 @@
         </radio-group>
       </view>
       <view class="body-item" style="display:{{powerOnMode==='0'||!powerOnMode?'none':'flex'}}">
-        <view class="name">预约通电时间:</view>
+        <view class="name">预约通水时间:</view>
         <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
           <view class="item-value">
             {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}
@@ -45,7 +45,7 @@
         </picker>
       </view>
       <view class="body-item" style="display:{{powerOnMode==='0'||!powerOnMode?'none':'flex'}}">
-        <view class="name">预约断电时间:</view>
+        <view class="name">预约断水时间:</view>
         <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
           <view class="item-value">
             {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}

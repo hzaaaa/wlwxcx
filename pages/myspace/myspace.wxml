@@ -5,16 +5,31 @@
   <image class="img" src='{{avatarUrl}}'></image>
   <view class="nickName">{{nickName}}</view>
   <view class="body">
-    <view class="item"></view>
+    <view class="item" id='useRecord' bindtap="goto">
+      <image src='/static/images/myspace/syjl.png' class="icon" ></image>
+      <view class="name">使用记录</view>
+      <image src="/static/images/common/xyjt.png" class="arrow"></image>
+    </view>
     <view class="line"></view>
-    <view class="item"></view>
+    <view class="item" id='myAppointment' bindtap="goto">
+      <image src='/static/images/myspace/wdyy.png' class="icon" ></image>
+      <view class="name">预约记录</view>
+      <image src="/static/images/common/xyjt.png" class="arrow"></image>
+    </view>
     <view class="line"></view>
-    <view class="item"></view>
+    <view class="item" id='myRepair' bindtap="goto">
+      <image src='/static/images/myspace/wdbx.png' class="icon" ></image>
+      <view class="name">报修记录</view>
+      <image src="/static/images/common/xyjt.png" class="arrow"></image>
+    </view>
     
   </view>
-  <view class="footer">
+  <!-- <view class="footer" >
     退出当前小程序
-  </view>
+  </view> -->
+  <view class="footer">
+		<navigator target="miniProgram" open-type="exit" >退出当前小程序</navigator>
+	</view>
   
   
 </view>

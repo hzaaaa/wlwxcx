@@ -30,73 +30,76 @@
       <view class="item-key">设备名称:</view>
       <view class="item-value">{{deviceData['device_name']}}</view>
     </view>
-    <view class="item">
-      <view class="item-key">空调温度:</view>
-      <view class="item-value">{{temperature}}°C</view>
-    </view>
-    <view class="temperatureC">
-      <slider min='19' max='30'  bindchange='temperatureChange' value="{{temperature}}" backgroundColor="#33333333" activeColor='#0068FF' block-size='12' show-value='true'/>
-      <view class="buttonC">
-        <view class="add" bindtap="addOne">
-          <image class="img" src="/static/images/common/shangla.png"></image>
+    <view hidden="{{editData.userState===0}}">
+      <view class="item">
+        <view class="item-key">空调温度:</view>
+        <view class="item-value">{{temperature}}°C</view>
+      </view>
+      <view class="temperatureC">
+        <slider min='16' max='30' bindchange='temperatureChange' value="{{temperature}}" backgroundColor="#33333333" activeColor='#0068FF' block-size='12' show-value='true' />
+        <view class="buttonC">
+          <view class="add" bindtap="addOne">
+            <image class="img" src="/static/images/common/shangla.png"></image>
+          </view>
+          <view class="add" bindtap="reduceOne">
+            <image class="img" src="/static/images/common/xiala.png"></image>
+          </view>
         </view>
-        <view class="add" bindtap="reduceOne">
-          <image class="img" src="/static/images/common/xiala.png"></image>
+      </view>
+      <view class="item">
+        <view class="item-key">空调模式:</view>
+        <radio-group bindchange='modeChange2'>
+          <view class="radioGC">
+            <view class="item">
+              <view class="radioC">
+                <radio color='#0068FF' value="1" checked="{{switch1Checked2}}" />
+              </view>
+              <view class="text">自动</view>
+            </view>
+            <view class="item">
+              <view class="radioC">
+                <radio color='#0068FF' value="2" checked="{{switch1Checked2}}" />
+              </view>
+              <view class="text">制冷</view>
+            </view>
+            <view class="item">
+              <view class="radioC">
+                <radio color='#0068FF' value="3" checked="{{switch1Checked2}}" />
+              </view>
+              <view class="text">抽湿</view>
+            </view>
+            <view class="item">
+              <view class="radioC">
+                <radio color='#0068FF' value="4" checked="{{switch1Checked2}}" />
+              </view>
+              <view class="text">送风</view>
+            </view>
+            <view class="item">
+              <view class="radioC">
+                <radio color='#0068FF' value="5" checked="{{switch1Checked2}}" />
+              </view>
+              <view class="text">制热</view>
+            </view>
+
+
+          </view>
+
+        </radio-group>
+      </view>
+      <view class="item">
+        <view class="item-key">空调风向:</view>
+        <view class="item-block-wrap">
+          <view wx:for='{{fengxiangList}}' bindtap="fengxiangChange" id='{{item.value}}' class="{{fengxiangValue===item.value?'item-block-active' :'item-block'}}">{{item.name}}</view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="item-key">空调强度:</view>
+        <view class="item-block-wrap">
+          <view wx:for='{{qiangduList}}' bindtap="qiangduChange" id='{{item.value}}' class="{{qiangduValue===item.value?'item-block-active' :'item-block'}}">{{item.name}}</view>
         </view>
       </view>
     </view>
-    <view class="item">
-      <view class="item-key">空调模式:</view>
-      <radio-group bindchange='modeChange2'>
-        <view class="radioGC">
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="1" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">自动</view>
-          </view>
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="2" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">制冷</view>
-          </view>
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="3" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">抽湿</view>
-          </view>
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="4" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">送风</view>
-          </view>
-          <view class="item">
-            <view class="radioC">
-              <radio color='#0068FF' value="5" checked="{{switch1Checked2}}" />
-            </view>
-            <view class="text">制热</view>
-          </view>
 
-
-        </view>
-
-      </radio-group>
-    </view>
-    <view class="item">
-      <view class="item-key">空调风向:</view>
-      <view class="item-block-wrap">
-        <view wx:for='{{fengxiangList}}' bindtap="fengxiangChange" id='{{item.value}}' class="{{fengxiangValue===item.value?'item-block-active' :'item-block'}}">{{item.name}}</view>
-      </view>
-    </view>
-    <view class="item">
-      <view class="item-key">空调强度:</view>
-      <view class="item-block-wrap">
-        <view wx:for='{{qiangduList}}' bindtap="qiangduChange" id='{{item.value}}' class="{{qiangduValue===item.value?'item-block-active' :'item-block'}}">{{item.name}}</view>
-      </view>
-    </view>
 
 
     <view class="item">
@@ -147,7 +150,7 @@
   <view class="footer">
     <view class="confirm" bindtap="confirmUpdate">确认</view>
     <view class="text">
-      设备有问题?点击<text style="color: #0068FF;">保修</text>
+      设备有问题?点击<text style="color: #0068FF;" bindtap="baoxiu">报修</text>
     </view>
   </view>
 </view>

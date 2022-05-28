@@ -4,15 +4,15 @@
   <view class="head-block">
     <view class="title">首页</view>
   </view>
-  <swiper class="banners abs"  		 indicator-dots indicator-color='rgba(255,255,255,0.2)' indicator-active-color='#FFFFFF'>
-    <swiper-item >
-      <image style="width: 100%;"  src="/static/images/user-bg.jpg"></image>
+  <swiper class="banners abs" indicator-dots indicator-color='rgba(255,255,255,0.2)' indicator-active-color='#FFFFFF'>
+    <swiper-item>
+      <image style="width: 100%;" src="/static/images/user-bg.jpg"></image>
     </swiper-item>
-    <swiper-item >
-      <image  style="width: 100%;" src="/static/images/user-bg.jpg"></image>
+    <swiper-item>
+      <image style="width: 100%;" src="/static/images/user-bg.jpg"></image>
     </swiper-item>
-    <swiper-item >
-      <image  style="width: 100%;" src="/static/images/user-bg.jpg"></image>
+    <swiper-item>
+      <image style="width: 100%;" src="/static/images/user-bg.jpg"></image>
     </swiper-item>
   </swiper>
   <view class="space2"></view>
@@ -31,28 +31,28 @@
         控水中心
       </view>
     </button>
-    
-    
-    <button class="item">
+
+
+    <button class="item" bindtap="goto" id='dataOverview'>
       <image src='/static/images/index/sjgl2.png' class="icon">
       </image>
       <view class="small-title">
         数据概览
       </view>
-    </button><button class="item">
+    </button><button class="item" bindtap="goto" id='repair'>
       <image src='/static/images/index/sbbx2.png' class="icon">
       </image>
       <view class="small-title">
-        设备保修
+        设备报修
       </view>
-    </button><button class="item">
+    </button><button class="item" bindtap="goto" id='debugging'>
       <image src='/static/images/index/sbts2.png' class="icon">
       </image>
       <view class="small-title">
         设备调试
       </view>
     </button>
-    <button class="item">
+    <button class="item" bindtap="goto" id='install'>
       <image src='/static/images/index/yjaz2.png' class="icon">
       </image>
       <view class="small-title">

@@ -1,0 +1,15 @@
+<!--pages/index/childPages/debugging/debugging.wxml-->
+<view class="debugging">
+  <view class="block">
+    <view class="head">
+      <view class="name">IMEI:</view>
+      <input class="input" id='input' value="{{imei}}" bindinput='input'></input>
+      <image src='/static/images/common/saoma.png' class="scan" bindtap="scanCode"></image>
+      <!-- <view ></view> -->
+    </view>
+    <view class="footer">
+      <view class="confirm" bindtap='confirmTap'>确认</view>
+      <view class="cancel" bindtap="gotoIndex">取消</view>
+    </view>
+  </view>
+</view>

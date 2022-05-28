@@ -33,7 +33,7 @@
 
     
     <view class="item">
-      <view class="item-key">通电方式:</view>
+      <view class="item-key">通水方式:</view>
       <radio-group bindchange='modeChange'>
         <view class="radioGC">
           <view class="item">
@@ -53,7 +53,7 @@
       </radio-group>
     </view>
     <view class="item" style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}"  >
-      <view class="item-key1">预约通电时间:</view>
+      <view class="item-key1">预约通水时间:</view>
 
       <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
         <view class="item-value">
@@ -64,7 +64,7 @@
 
     </view>
     <view class="item"  style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}">
-      <view class="item-key1">预约断电时间:</view>
+      <view class="item-key1">预约断水时间:</view>
 
       <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
         <view class="item-value">
@@ -78,7 +78,7 @@
   <view class="footer">
     <view class="confirm" bindtap="confirmUpdate">确认</view>
     <view class="text">
-      设备有问题?点击<text style="color: #0068FF;">保修</text>
+      设备有问题?点击<text style="color: #0068FF;" bindtap="baoxiu">报修</text>
     </view>
   </view>
 </view>

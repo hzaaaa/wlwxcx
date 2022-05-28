@@ -10,41 +10,41 @@
     <view class="item">
       <view class="item-key">设备状态:</view>
       <view class="switchC">
-        <switch color='#0068FF' checked="{{switch1Checked}}" bindchange="switch1Change" />
+        <switch color='#0068FF' checked="{{editData.userState===1}}" bindchange="stateChange" />
       </view>
     </view>
     <view class="item">
       <view class="item-key">设备编号:</view>
-      <view class="item-value">111102515111</view>
+      <view class="item-value">{{deviceData.id}}</view>
     </view>
     <view class="item">
       <view class="item-key">设备位置:</view>
-      <view class="item-value">111102515111</view>
+      <view class="item-value">{{deviceData.position}}</view>
     </view>
     <view class="item">
       <view class="item-key">设备类型:</view>
-      <view class="item-value">111102515111</view>
+      <view class="item-value">{{deviceData['device_type']}}</view>
     </view>
 
     <view class="item">
       <view class="item-key">设备名称:</view>
-      <view class="item-value">111102515111</view>
+      <view class="item-value">{{deviceData['device_name']}}</view>
     </view>
 
     
     <view class="item">
       <view class="item-key">通电方式:</view>
-      <radio-group>
+      <radio-group bindchange='modeChange'>
         <view class="radioGC">
           <view class="item">
             <view class="radioC">
-              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+              <radio color='#0068FF' value="0" checked="{{switch1Checked2}}" />
             </view>
             <view class="text">实时</view>
           </view>
           <view class="item">
             <view class="radioC">
-              <radio color='#0068FF' value="r1" checked="{{switch1Checked2}}" />
+              <radio color='#0068FF' value="1" checked="{{switch1Checked2}}" />
             </view>
             <view class="text">预约</view>
           </view>
@@ -54,7 +54,7 @@
 
       </radio-group>
     </view>
-    <view class="item">
+    <view class="item" style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}"  >
       <view class="item-key1">预约通电时间:</view>
 
       <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
@@ -65,7 +65,7 @@
       </picker>
 
     </view>
-    <view class="item">
+    <view class="item"  style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}">
       <view class="item-key1">预约断电时间:</view>
 
       <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
@@ -78,9 +78,9 @@
     </view>
   </view>
   <view class="footer">
-    <view class="confirm">确认</view>
+    <view class="confirm" bindtap="confirmUpdate">确认</view>
     <view class="text">
-      设备有问题?点击<text style="color: #0068FF;">保修</text>
+      设备有问题?点击<text style="color: #0068FF;" bindtap="baoxiu">报修</text>
     </view>
   </view>
 </view>

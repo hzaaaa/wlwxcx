@@ -3,7 +3,7 @@
   <!-- test -->
   <view class="socket">
     <view class="title">批量操作</view>
-    <image src="/static/images/common/close.png" class="close" bindtap="closePopup"/>
+    <image src="/static/images/common/close.png" class="close" bindtap="closePopup" />
     <view class="body">
       <view class="body-item">
         <view class="name">设备类型:</view>
@@ -15,38 +15,41 @@
           <switch color='#0068FF' checked="{{userState}}" bindchange="stateChange" />
         </view>
       </view>
-      <view class="body-item">
-        <view class="name">额定电流:</view>
-        <radio-group bindchange='dianliuChange'>
-          <view class="radioGC">
-            <view class="item">
-              <view class="radioC">
-                <radio color='#0068FF' value="2" checked="{{switch1Checked2}}" />
+      <view hidden="{{userState===0}}">
+        <view class="body-item">
+          <view class="name">额定电流:</view>
+          <radio-group bindchange='dianliuChange'>
+            <view class="radioGC">
+              <view class="item">
+                <view class="radioC">
+                  <radio color='#0068FF' value="2" checked="{{switch1Checked2}}" />
+                </view>
+                <view class="text">2A</view>
               </view>
-              <view class="text">2A</view>
-            </view>
-            <view class="item">
-              <view class="radioC">
-                <radio color='#0068FF' value="8" checked="{{switch1Checked2}}" />
+              <view class="item">
+                <view class="radioC">
+                  <radio color='#0068FF' value="8" checked="{{switch1Checked2}}" />
+                </view>
+                <view class="text">8A</view>
               </view>
-              <view class="text">8A</view>
-            </view>
-            <view class="item">
-              <view class="radioC">
-                <radio color='#0068FF' value="16" checked="{{switch1Checked2}}" />
+              <view class="item">
+                <view class="radioC">
+                  <radio color='#0068FF' value="16" checked="{{switch1Checked2}}" />
+                </view>
+                <view class="text">16A</view>
               </view>
-              <view class="text">16A</view>
-            </view>
-            <view class="item">
-              <view class="radioC">
-                <radio color='#0068FF' value="30" checked="{{switch1Checked2}}" />
+              <view class="item">
+                <view class="radioC">
+                  <radio color='#0068FF' value="30" checked="{{switch1Checked2}}" />
+                </view>
+                <view class="text">30A</view>
               </view>
-              <view class="text">30A</view>
             </view>
-          </view>
 
-        </radio-group>
+          </radio-group>
+        </view>
       </view>
+
       <view class="body-item">
         <view class="name">通电方式:</view>
         <radio-group bindchange='modeChange'>

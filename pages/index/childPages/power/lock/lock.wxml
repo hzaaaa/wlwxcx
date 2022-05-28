@@ -1,4 +1,5 @@
 <view class="socket">
+  <setPassword show='{{showPopup}}' ids='{{deviceData.id}}' bindmyevent='updateState'></setPassword>
   <view class="head">
     <image class="xzjt" id='index' bindtap="gotoPage" src="/static/images/common/xzjt.png"></image>
     <view class="title">门锁设置</view>
@@ -32,16 +33,22 @@
     </view>
     <view class="item">
       <view class="item-key">门锁指纹:</view>
-      <view class="item-value">{{'未录入指纹'}}</view>
+      <view class="item-value" bindtap="editZhiwen">
+        {{zhiwen.isFirst?zhiwen.firstText:zhiwen.text}}
+        <text style="color:#0068FF">{{zhiwen.isFirst?zhiwen.firstEidt:zhiwen.eidt}}</text>
+      </view>
     </view>
     <view class="item">
       <view class="item-key">门锁密码:</view>
-      <view class="item-value">{{'未录入指纹'}}</view>
+      <view class="item-value" bindtap="editPassword">
+        {{password.isFirst?password.firstText:password.text}}
+        <text style="color:#0068FF">{{password.isFirst?password.firstEidt:password.eidt}}</text>
+      </view>
+
     </view>
 
-    
     <view class="item">
-      <view class="item-key">通电方式:</view>
+      <view class="item-key">开锁方式:</view>
       <radio-group bindchange='modeChange'>
         <view class="radioGC">
           <view class="item">
@@ -56,28 +63,31 @@
             </view>
             <view class="text">预约</view>
           </view>
+
+
         </view>
 
       </radio-group>
     </view>
-    <view class="item" style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}"  >
-      <view class="item-key1">预约通电时间:</view>
+
+    <view class="item" style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}">
+      <view class="item-key1">预约开锁时间:</view>
 
       <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
         <view class="item-value">
-           {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}
-            <text style="color:#0068FF">修改</text>
+          {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}
+          <text style="color:#0068FF">修改</text>
         </view>
       </picker>
 
     </view>
-    <view class="item"  style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}">
-      <view class="item-key1">预约断电时间:</view>
+    <view class="item" style="display:{{editData.powerOnMode==='0'||!editData.powerOnMode?'none':'flex'}}">
+      <view class="item-key1">预约关锁时间:</view>
 
       <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
         <view class="item-value">
-           {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
-            <text style="color:#0068FF">修改</text>
+          {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+          <text style="color:#0068FF">修改</text>
         </view>
       </picker>
 
@@ -86,7 +96,7 @@
   <view class="footer">
     <view class="confirm" bindtap="confirmUpdate">确认</view>
     <view class="text">
-      设备有问题?点击<text style="color: #0068FF;">保修</text>
+      设备有问题?点击<text style="color: #0068FF;" bindtap="baoxiu">报修</text>
     </view>
   </view>
 </view>
